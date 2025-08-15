@@ -88,10 +88,10 @@ sumkisstw/
 │   ├── hero/                           # 主視覺圖片
 │   └── v1/                             # 版本1圖片
 ├── index.html                          # 首頁
-├── about.html                          # 關於我們頁面
-├── lovestories.html                    # 愛情故事頁面
-├── price.html                          # 價格方案頁面
-├── faq.html                           # FAQ頁面
+├── /sumkisstw/about                          # 關於我們頁面
+├── /sumkisstw/lovestories                    # 愛情故事頁面
+├── /sumkisstw/price                          # 價格方案頁面
+├── /sumkisstw/faq                           # FAQ頁面
 └── README.md                           # 專案說明文件
 ```
 
