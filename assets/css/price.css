@@ -68,7 +68,7 @@ body {
 .about-hero {
     position: relative;
     height: 700px;
-    background-image: url('../hero/0623_06.jpg');
+    background-image: url('../hero/0623_25.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -138,10 +138,233 @@ body {
     background-color: #fff;
 }
 
-.story-content {
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
+/* ===== MEMORIES SECTION ===== */
+.about-story.memories-section {
+    background-color: #fff;
+    position: relative;
+}
+
+/* ===== LOVE STORY SECTION ===== */
+.about-story.love-story-section {
+    background-color: #fff;
+}
+
+.memories-section .section-title {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.memories-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background-color: #f7bc51;
+}
+
+.memories-section .story-image {
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.memories-section .story-image:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.memories-section .story-image img {
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.memories-section .story-image:hover img {
+    transform: scale(1.08) !important;
+}
+
+.memories-section .overlay {
+    display: none !important; /* 完全隱藏overlay，移除懸浮效果 */
+}
+
+.memories-section .story-image:hover .overlay {
+    display: none !important; /* 滑鼠懸浮時也不顯示 */
+}
+
+.memories-section .overlay-content span {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 30px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.memories-section .overlay-content span:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.memories-section .story-text {
+    padding: 2rem 0;
+}
+
+/* 移除固定的字體大小設定，使用統一的響應式設定 */
+.memories-section .story-text p {
+    /* font-size: 1.15rem; 移除固定字體大小 */
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.memories-section .story-text p::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    font-size: 3rem;
+    color: #f7bc51;
+    font-family: serif;
+    line-height: 1;
+}
+
+/* 回憶系列文字區塊樣式 - 與愛情故事區塊保持一致 */
+.memories-section .story-text {
+    text-align: left;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.8s ease 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 100%;
+    height: 100%;
+    padding: 1.5rem 0;
+    max-width: 500px;
+    margin: 0;
+}
+
+/* 移除固定的字體大小設定，使用統一的響應式設定 */
+.memories-section .story-text p {
+    /* font-size: 1.1rem; 移除固定字體大小 */
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 0;
+}
+
+.memories-section .story-text p::before {
+    display: none;
+}
+
+.memories-section .list-unstyled {
+    margin-top: 2rem;
+}
+
+.memories-section .list-unstyled li {
+    font-size: 1.1rem;
+    color: #666;
+    padding: 0.8rem 0;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.memories-section .list-unstyled li:hover {
+    color: #333;
+    transform: translateX(5px);
+}
+
+.memories-section .list-unstyled li i {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #f7bc51;
+    transition: all 0.3s ease;
+}
+
+.memories-section .list-unstyled li:hover i {
+    transform: translateY(-50%) scale(1.2);
+    color: #e5a93c;
+}
+
+/* Memories Section Responsive - 與愛情故事區塊保持一致 */
+@media (max-width: 991px) {
+    .memories-section .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .memories-section .story-text {
+        padding: 1.5rem 0;
+        max-width: 100%;
+    }
+    
+    /* 移除固定字體大小設定，使用統一的響應式設定 */
+    .memories-section .story-text p {
+        /* font-size: 1.05rem; 移除固定字體大小 */
+        padding-left: 0;
+    }
+    
+    .memories-section .list-unstyled li {
+        font-size: 1rem;
+        padding-left: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .memories-section .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .memories-section .story-text {
+        padding: 1.5rem 0;
+        max-width: 100%;
+    }
+    
+    /* 移除固定字體大小設定，使用統一的響應式設定 */
+    .memories-section .story-text p {
+        /* font-size: 1rem; 移除固定字體大小 */
+        padding-left: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .memories-section .list-unstyled li {
+        font-size: 0.95rem;
+        padding-left: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .memories-section .story-text {
+        padding: 1.5rem 0;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .memories-section .story-text p {
+        padding-left: 0;
+    }
 }
 
 /* 修正container的padding問題 */
@@ -279,7 +502,7 @@ body {
     height: 100%;
     padding: 1.5rem 0;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 0 0 0;
 }
 
 .story-text h3 {
@@ -290,7 +513,7 @@ body {
 }
 
 .story-text p {
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; 移除固定字體大小，使用統一的響應式設定 */
     color: #666;
     line-height: 1.8;
     margin-bottom: 2rem;
@@ -657,62 +880,6 @@ body {
 
 /* ===== RESPONSIVE DESIGN ===== */
 
-/* ===== RESPONSIVE FONT SIZES FOR STORY & TEAM SECTIONS ===== */
-
-/* Large Desktop (≥1200px) */
-@media (min-width: 1200px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 1.1rem; /* 17.6px */
-    }
-}
-
-/* Desktop (992px-1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 1.1rem; /* 17.6px */
-    }
-}
-
-/* Tablet (768px-991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 1rem; /* 16px */
-    }
-}
-
-/* Mobile Large (576px-767px) */
-@media (min-width: 576px) and (max-width: 767px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 0.9rem; /* 14.4px */
-    }
-}
-
-/* Mobile Small (≤575px) */
-@media (max-width: 575px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 0.85rem; /* 13.6px */
-    }
-}
-
-/* Extra Small Mobile (≤399px) */
-@media (max-width: 399px) {
-    .story-text p,
-    .team-text p,
-    .message-content p {
-        font-size: 0.85rem; /* 13.6px */
-    }
-}
-
 /* Desktop Navigation (992px+) */
 @media (min-width: 992px) {
     /* About Hero Section */
@@ -922,7 +1089,6 @@ body {
         overflow-y: auto;
         padding-left: 20px;
         padding-right: 20px;
-        padding-bottom: 50px; /* 增加底部間距避免與提示重疊 */
         box-sizing: border-box;
         width: 100%;
         max-width: 100%;
@@ -940,15 +1106,15 @@ body {
     /* 滑動提示樣式 */
     .scroll-hint {
         position: absolute;
-        bottom: 5px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.7);
         color: white;
-        padding: 6px 12px;
-        border-radius: 15px;
-        font-size: 0.75rem;
-        opacity: 0.9;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        opacity: 1;
         z-index: 10;
         pointer-events: none;
         animation: fadeInOut 3s ease-in-out infinite;
@@ -1025,7 +1191,6 @@ body {
         overflow-y: auto;
         padding-left: 12px;
         padding-right: 12px;
-        padding-bottom: 50px; /* 增加底部間距避免與提示重疊 */
         box-sizing: border-box;
         width: 100%;
         max-width: 100%;
@@ -1049,15 +1214,15 @@ body {
     /* 滑動提示樣式 */
     .scroll-hint {
         position: absolute;
-        bottom: 5px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.7);
         color: white;
-        padding: 6px 12px;
-        border-radius: 15px;
-        font-size: 0.75rem;
-        opacity: 0.9;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        opacity: 0.8;
         z-index: 10;
         pointer-events: none;
         animation: fadeInOut 3s ease-in-out infinite;
@@ -1120,7 +1285,6 @@ body {
     max-width: 100% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    padding-bottom: 50px !important; /* 增加底部間距避免與提示重疊 */
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -1135,14 +1299,14 @@ body {
   /* 滑動提示樣式 */
   .scroll-hint {
     position: absolute !important;
-    bottom: 5px !important;
+    bottom: 10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: rgba(0, 0, 0, 0.7) !important;
     color: white !important;
-    padding: 6px 12px !important;
-    border-radius: 15px !important;
-    font-size: 0.75rem !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    font-size: 0.8rem !important;
     opacity: 0.8 !important;
     z-index: 10 !important;
     pointer-events: none !important;
@@ -1190,3 +1354,54 @@ body {
   max-width: 100%;
   height: auto;
 }
+
+/* ===== Story 區塊和 Team 區塊內文字體大小設定 ===== */
+/* Large Desktop (≥1200px) */
+@media (min-width: 1200px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Desktop (992px-1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Tablet (768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 1rem !important; /* 約 16px */
+    }
+}
+
+/* Mobile Large (576px-767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 0.9rem !important; /* 約 14.4px */
+    }
+}
+
+/* Mobile Small (≤575px) */
+@media (max-width: 575px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 0.85rem !important; /* 約 13.6px */
+    }
+}
+
+/* Extra Small Mobile (≤399px) */
+@media (max-width: 399px) {
+    .about-story .story-text p,
+    .about-team .team-text p {
+        font-size: 0.85rem !important; /* 約 13.6px */
+    }
+}
+
+

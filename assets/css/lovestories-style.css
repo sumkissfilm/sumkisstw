@@ -1,0 +1,241 @@
+/* ========================================
+   SUMMER KISSES - MAIN STYLESHEET
+   ======================================== */
+
+/* ===== RESET AND BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.text-warning {
+    color: #f7bc51 !important;
+}
+
+.btn-warning {
+    background-color: #f7bc51 !important;
+    border-color: #f7bc51 !important;
+    color: #fff !important;
+}
+
+.btn-warning:hover {
+    background-color: #e5a93c !important;
+    border-color: #e5a93c !important;
+}
+
+.bg-gradient {
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+}
+
+.section-title {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background-color: #f7bc51;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    position: relative;
+    height: 700px;
+    background-image: url('../hero/0416_20.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.about-hero {
+    position: relative;
+    height: 700px;
+    background-image: url('../hero/0416_20.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.about-hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.about-hero .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-hero .col-12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.about-hero-content h1 {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ===== SHOWCASE SECTION ===== */
+.showcase-section {
+    background-color: #fff;
+    padding: 5rem 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Desktop Styles (≥992px) */
+@media (min-width: 992px) {
+    .about-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-hero-content p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablet Styles (≤991px) */
+@media (max-width: 991px) {
+    .hero {
+        height: 500px;
+    }
+    
+    .about-hero {
+        height: 40vh;
+        min-height: 300px;
+    }
+
+    .about-hero-content h1 {
+        font-size: 1.25rem;
+    }
+
+    .about-hero-content p {
+        font-size: 0.9375rem;
+    }
+}
+
+/* Mobile Styles (≤576px) */
+@media (max-width: 576px) {
+    .hero {
+        height: 400px;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 1.125rem;
+    }
+
+    .about-hero-content p {
+        font-size: 0.8125rem;
+    }
+    
+    /* 移除衝突的 section-title 設定，由 story-section.css 統一管理 */
+}
+
+/* ===== CONTAINER RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 576px) {
+    .container,
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+} 

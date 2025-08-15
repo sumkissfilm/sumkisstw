@@ -1,0 +1,1118 @@
+/* ===== 簡化版愛情故事價格區塊CSS ===== */
+
+/* 主題色彩 */
+:root {
+    --primary-color: #f7bc51;
+    --secondary-color: #f39c12;
+    --text-dark: #333;
+    --text-muted: #666;
+    --text-light: #999;
+    --white: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 統一文字區塊字體大小設定 ===== */
+/* 確保愛情故事、回憶系列、商業合作三個區塊的字體大小完全一致 */
+/* 使用最高優先級確保覆蓋所有其他設定 */
+
+/* Large Desktop (≥1200px) */
+@media (min-width: 1200px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Desktop (992px-1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Tablet (768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1rem !important; /* 約 16px */
+    }
+}
+
+/* Mobile Large (576px-767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1rem !important; /* 約 14.4px */
+    }
+}
+
+/* Mobile Small (≤575px) */
+@media (max-width: 575px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1rem !important; /* 約 13.6px */
+    }
+}
+
+/* Extra Small Mobile (≤399px) */
+@media (max-width: 399px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p {
+        font-size: 1rem !important; /* 約 13.6px */
+    }
+}
+
+/* ===== Love Story 區塊內文字體大小設定 ===== */
+/* 這些設定現在被上面的統一設定覆蓋，保持向後兼容 */
+/* Large Desktop (≥1200px) */
+@media (min-width: 1200px) {
+    .about-story .story-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Desktop (992px-1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-story .story-text p {
+        font-size: 1.1rem !important; /* 約 17.6px */
+    }
+}
+
+/* Tablet (768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-story .story-text p {
+        font-size: 1rem !important; /* 約 16px */
+    }
+}
+
+/* Mobile Large (576px-767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .about-story .story-text p {
+        font-size: 0.9rem !important; /* 約 14.4px */
+    }
+}
+
+/* Mobile Small (≤575px) */
+@media (max-width: 575px) {
+    .about-story .story-text p {
+        font-size: 0.85rem !important; /* 約 13.6px */
+    }
+}
+
+/* Extra Small Mobile (≤399px) */
+@media (max-width: 399px) {
+    .about-story .story-text p {
+        font-size: 0.85rem !important; /* 約 13.6px */
+    }
+}
+
+/* ===== 回憶系列價格卡片間距調整 ===== */
+/* 縮小回憶系列價格卡片與上排文字的間距 */
+.about-story .story-text .pricing-card {
+    margin-top: 1rem !important; /* 從預設的 2rem 縮小到 1rem */
+}
+
+/* 讓回憶系列價格卡片底部與左側照片對齊 */
+.memories-section .row.align-items-start {
+    align-items: stretch !important; /* 讓左右兩側內容高度一致 */
+}
+
+.memories-section .story-text {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.memories-section .story-text .pricing-card {
+    margin-top: auto !important; /* 將價格卡片推到底部 */
+    flex-grow: 1 !important; /* 讓價格卡片佔滿剩餘空間 */
+}
+
+.memories-section .story-text .pricing-card .card {
+    height: 100% !important; /* 確保卡片高度填滿容器 */
+}
+
+/* ===== 統一按鈕樣式 ===== */
+/* 所有預約諮詢按鈕的統一樣式 */
+.text-center .btn-outline-warning {
+    border-radius: 50px !important;
+    padding: 0.8rem 2rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    text-align: center !important;
+    font-size: 0.95rem !important;
+    border: 2px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    background: transparent !important;
+    min-width: 200px !important;
+}
+
+.text-center .btn-outline-warning:hover {
+    background: var(--primary-color) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(247, 188, 81, 0.3) !important;
+}
+
+/* 價格區塊基本樣式 */
+section.pricing-section {
+    padding: 5rem 0 !important;
+    background-color: #fff !important;
+}
+
+/* 價格卡片樣式 */
+section.pricing-section .pricing-card {
+    margin-bottom: 2rem !important;
+    transition: transform 0.3s ease !important;
+}
+
+section.pricing-section .pricing-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+/* 卡片樣式 */
+section.pricing-section .pricing-card .card {
+    border: none !important;
+    border-radius: 15px !important;
+    background: var(--white) !important;
+    box-shadow: 0 5px 15px var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 特色卡片樣式 - 品牌色外框 */
+section.pricing-section .pricing-card .featured-card {
+    border: 3px solid var(--primary-color) !important;
+    box-shadow: 0 8px 25px rgba(247, 188, 81, 0.2) !important;
+    position: relative !important;
+}
+
+section.pricing-section .pricing-card .featured-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: -2px !important;
+    right: -2px !important;
+    bottom: -2px !important;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color)) !important;
+    border-radius: 17px !important;
+    z-index: -1 !important;
+    opacity: 0.8 !important;
+    transition: all 0.3s ease !important;
+}
+
+section.pricing-section .pricing-card:hover .featured-card::before {
+    opacity: 1 !important;
+    transform: scale(1.02) !important;
+}
+
+section.pricing-section .pricing-card:hover .card {
+    box-shadow: 0 15px 35px var(--shadow-medium) !important;
+}
+
+/* 卡片內容樣式 */
+section.pricing-section .pricing-card .card-body {
+    padding: 1.5rem !important;
+}
+
+/* 標題樣式 */
+section.pricing-section .pricing-card .card-title {
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important; /* 縮小標題與原價的間距 */
+    line-height: 1.4 !important;
+    min-height: 80px !important; /* 確保所有卡片標題區域高度一致 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+/* 統一標籤與標題間距 */
+section.pricing-section .pricing-card .card-title .badge {
+    margin-bottom: 0.8rem !important; /* 統一標籤下方間距 */
+    margin-top: 0 !important;
+    align-self: flex-start !important;
+}
+
+/* 標題文字樣式 */
+section.pricing-section .pricing-card .card-title br + * {
+    margin-top: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* 標題中的徽章樣式 */
+section.pricing-section .pricing-card .card-title .badge {
+    display: inline-block !important;
+    font-size: 0.7rem !important;
+    padding: 0.4rem 0.6rem !important;
+    border-radius: 15px !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    width: auto !important;
+    min-width: fit-content !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 第二個徽章的間距調整 */
+section.pricing-section .pricing-card .card-title .badge + .badge {
+    margin-left: 0 !important;
+    width: auto !important;
+    min-width: fit-content !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+}
+
+/* 確保所有徽章在同一行對齊 */
+section.pricing-section .pricing-card .card-title br + .badge {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+}
+
+/* 推薦徽章樣式 */
+section.pricing-section .pricing-card .card-title .badge.bg-warning {
+    background-color: #f7bc51 !important;
+    color: #333 !important;
+    border: 1px solid #f39c12 !important;
+}
+
+/* 限時徽章樣式 */
+section.pricing-section .pricing-card .card-title .badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    border: 1px solid #c82333 !important;
+}
+
+
+
+/* 徽章圖示統一樣式 */
+section.pricing-section .pricing-card .card-title .badge i {
+    font-size: 1.2rem !important;
+    margin-right: 0.2rem !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+/* 徽章懸停效果 */
+section.pricing-section .pricing-card .card-title .badge {
+    transition: all 0.3s ease !important;
+}
+
+section.pricing-section .pricing-card .card-title .badge:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 推薦徽章懸停效果 */
+section.pricing-section .pricing-card .card-title .badge.bg-warning:hover {
+    background-color: #f39c12 !important;
+    border-color: #e67e22 !important;
+}
+
+/* 限時徽章懸停效果 */
+section.pricing-section .pricing-card .card-title .badge.bg-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+
+
+
+/* 標題換行後的間距 */
+section.pricing-section .pricing-card .card-title br {
+    display: block !important;
+    content: "" !important;
+    margin-top: 0.3rem !important;
+}
+
+/* 徽章容器統一樣式 */
+section.pricing-section .pricing-card .card-title {
+    display: block !important;
+}
+
+section.pricing-section .pricing-card .card-title br + .badge {
+    margin-top: 0.8rem !important;
+    margin-bottom: 0.1rem !important;
+}
+
+/* 確保徽章在同一行顯示 - 強制左右並排排列 */
+section.pricing-section .pricing-card .card-title br + .badge,
+section.pricing-section .pricing-card .card-title br + .badge + .badge {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    float: none !important;
+    clear: none !important;
+    margin-right: 0.5rem !important;
+}
+
+/* 徽章容器 - 確保左右並排排列 */
+section.pricing-section .pricing-card .card-title br + span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    margin-right: 0.5rem !important;
+}
+
+/* 強制徽章容器不換行 */
+section.pricing-section .pricing-card .card-title {
+    white-space: normal !important;
+}
+
+section.pricing-section .pricing-card .card-title br + * {
+    white-space: nowrap !important;
+    display: inline-block !important;
+    margin-right: 0.5rem !important;
+}
+
+/* 確保所有徽章都在同一行 - 左右並排 */
+section.pricing-section .pricing-card .card-title .badge {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    float: none !important;
+    clear: none !important;
+    vertical-align: middle !important;
+    margin-right: 0.5rem !important;
+}
+
+/* 最終強制規則 - 確保徽章左右並排排列 */
+section.pricing-section .pricing-card .card-title br + .badge,
+section.pricing-section .pricing-card .card-title br + .badge + .badge,
+section.pricing-section .pricing-card .card-title .badge + .badge {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    float: none !important;
+    clear: none !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    word-wrap: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    margin-right: 0.5rem !important;
+}
+
+/* 防止徽章換行的額外保護 */
+@media (max-width: 767px) {
+    section.pricing-section .pricing-card .card-title br + .badge,
+    section.pricing-section .pricing-card .card-title br + .badge + .badge,
+    section.pricing-section .pricing-card .card-title .badge + .badge {
+        display: inline-block !important;
+        white-space: nowrap !important;
+        float: none !important;
+        clear: none !important;
+        vertical-align: middle !important;
+        line-height: 1.2 !important;
+        word-wrap: normal !important;
+        word-break: keep-all !important;
+        overflow-wrap: normal !important;
+        max-width: none !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        margin-right: 0.3rem !important;
+    }
+}
+
+
+
+/* 徽章樣式 */
+section.pricing-section .pricing-card .badge {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 20px !important;
+}
+
+/* 價格顯示樣式 */
+section.pricing-section .price {
+    margin: 1.5rem 0 !important;
+}
+
+section.pricing-section .original-price {
+    text-decoration: line-through !important;
+    color: var(--text-light) !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+section.pricing-section .original-price .h5 {
+    font-size: 1rem !important;
+}
+
+section.pricing-section .original-price::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    margin-top: 0.5rem;
+}
+
+section.pricing-section .discounted-price {
+    margin-top: 0.5rem !important;
+}
+
+section.pricing-section .discounted-price .h2 {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    font-size: 2.5rem !important;
+}
+
+section.pricing-section .discounted-price .h3 {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+}
+
+section.pricing-section .discounted-price .text-muted {
+    font-size: 1rem !important;
+    color: var(--text-muted) !important;
+}
+
+/* 功能列表樣式 */
+section.pricing-section .pricing-card ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+section.pricing-section .pricing-card ul li {
+    margin-bottom: 0.5rem !important;
+    color: var(--text-muted) !important;
+    position: relative !important;
+    padding-left: 0 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+}
+
+section.pricing-section .pricing-card ul li i {
+    color: var(--primary-color) !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin-right: 0 !important;
+    margin-top: 0.1rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* 覆蓋Bootstrap的me-2類別 */
+section.pricing-section .pricing-card ul li i.me-2 {
+    margin-right: 0 !important;
+}
+
+/* 按鈕樣式 - 使用統一按鈕樣式 */
+/* 移除舊的按鈕樣式，使用統一的 .text-center .btn-outline-warning 樣式 */
+
+/* 響應式設計 */
+
+/* 大螢幕 (≥1200px) */
+@media (min-width: 1200px) {
+    section.pricing-section .pricing-card .card-body {
+        padding: 1.75rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title {
+        font-size: 1.2rem !important;
+        min-height: 90px !important;
+        margin-bottom: 0.6rem !important; /* 大螢幕下的間距 */
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge {
+        margin-bottom: 1rem !important;
+        margin-top: 0 !important;
+        font-size: 0.6875rem !important;
+        padding: 0.6rem 0.8rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge i {
+        font-size: 0.6rem !important;
+        margin-right: 0.2rem !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge + .badge {
+        margin-left: 0 !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+        float: none !important;
+        clear: none !important;
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 2.2rem !important;
+    }
+}
+
+/* 中等螢幕 (≥992px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    section.pricing-section .pricing-card .card-body {
+        padding: 1.5rem !important;
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* 小螢幕 (≥768px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    section.pricing-section .pricing-card .card-body {
+        padding: 1.25rem !important;
+    }
+    
+    section.pricing-section .card-title {
+        font-size: 1rem !important;
+        min-height: 75px !important;
+        margin-bottom: 0.4rem !important; /* 中等螢幕下的間距 */
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge {
+        margin-bottom: 0.8rem !important;
+        margin-top: 0 !important;
+        font-size: 0.65rem !important;
+        padding: 0.3rem 0.5rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge i {
+        font-size: 0.55rem !important;
+        margin-right: 0.2rem !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge + .badge {
+        margin-left: 0 !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+        float: none !important;
+        clear: none !important;
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 1.6rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+        gap: 0.4rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li i {
+        margin-top: 0.05rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li i.me-2 {
+        margin-right: 0 !important;
+    }
+}
+
+/* 手機版 (≤767px) */
+@media (max-width: 767px) {
+    section.pricing-section {
+        padding: 2rem 0 !important;
+    }
+    
+    section.pricing-section .pricing-card .card-body {
+        padding: 1rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title {
+        font-size: 1rem !important;
+        line-height: 1.3 !important;
+        min-height: 70px !important;
+        margin-bottom: 0.3rem !important; /* 手機版下的間距 */
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge {
+        margin-bottom: 0.6rem !important;
+        margin-top: 0 !important;
+        font-size: 0.6rem !important;
+        padding: 0.25rem 0.4rem !important;
+        display: inline-block !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        float: none !important;
+        clear: none !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge i {
+        font-size: 0.5rem !important;
+        margin-right: 0.2rem !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title .badge + .badge {
+        margin-left: 0 !important;
+        display: inline-block !important;
+        margin-top: 0 !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        vertical-align: middle !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        float: none !important;
+        clear: none !important;
+    }
+    
+    /* 手機版徽章保持同行 - 所有手機版斷點 */
+    @media (max-width: 480px) {
+        section.pricing-section .pricing-card .card-title .badge + .badge {
+            display: inline-block !important;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+            width: auto !important;
+            min-width: fit-content !important;
+            white-space: nowrap !important;
+            float: none !important;
+            clear: none !important;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        section.pricing-section .pricing-card .card-title .badge + .badge {
+            display: inline-block !important;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+            width: auto !important;
+            min-width: fit-content !important;
+            white-space: nowrap !important;
+            float: none !important;
+            clear: none !important;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        section.pricing-section .pricing-card .card-title .badge + .badge {
+            display: inline-block !important;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+            width: auto !important;
+            min-width: fit-content !important;
+            white-space: nowrap !important;
+            float: none !important;
+            clear: none !important;
+        }
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.4rem !important;
+        line-height: 1.3 !important;
+        gap: 0.3rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li i {
+        margin-top: 0.05rem !important;
+        margin-right: 0.4rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li i.me-2 {
+        margin-right: 0 !important;
+    }
+    
+    .text-center .btn-outline-warning {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+} 
+
+/* 商業形象廣告諮詢卡片樣式 */
+section.about-story .card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+section.about-story .card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+section.about-story .card .card-body {
+    padding: 3rem 2rem !important;
+}
+
+section.about-story .card .fas.fa-handshake {
+    background: linear-gradient(135deg, #f7bc51, #f39c12) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+section.about-story .card h3 {
+    color: #333 !important;
+    font-weight: 600 !important;
+}
+
+section.about-story .card p {
+    line-height: 1.6 !important;
+    color: #666 !important;
+}
+
+/* 商業拍攝合作按鈕樣式 - 使用統一按鈕樣式 */
+/* 移除舊的按鈕樣式，使用統一的 .text-center .btn-outline-warning 樣式 */
+
+/* 響應式調整 */
+
+/* 大螢幕 (≥1200px) */
+@media (min-width: 1200px) {
+    .text-center .btn-outline-warning {
+        padding: 1rem 2.5rem !important;
+        font-size: 1rem !important;
+        min-width: 250px !important;
+    }
+}
+
+/* 中等螢幕 (≥768px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .text-center .btn-outline-warning {
+        padding: 0.8rem 2.2rem !important;
+        font-size: 0.95rem !important;
+        min-width: 220px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    section.about-story .card .card-body {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    section.about-story .card h3 {
+        font-size: 1.25rem !important;
+    }
+    
+    section.about-story .card .fas.fa-handshake {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    section.about-story .card .card-body {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .text-center .btn-outline-warning {
+        padding: 0.6rem 1.5rem !important;
+        font-size: 0.85rem !important;
+        min-width: 160px !important;
+    }
+} 
+
+/* ===== 車馬費區塊CSS ===== */
+
+/* 車馬費區塊基本樣式 */
+#transport-cost.pricing-section {
+    background-color: #ffffff !important;
+    padding: 5rem 0 !important;
+}
+
+/* 車馬費圖示樣式 */
+#transport-cost .fas.fa-car {
+    background: linear-gradient(135deg, #f7bc51, #f39c12) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+/* 車馬費標題樣式 */
+#transport-cost.pricing-section h2.section-title {
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+}
+
+#transport-cost h3.h4 {
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+}
+
+#transport-cost p.text-muted {
+    color: var(--text-muted) !important;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 車馬費網格表格樣式 */
+.transport-cost-table {
+    margin-bottom: 0;
+}
+
+/* 表格標題樣式 */
+.transport-cost-table .table-header {
+    border-bottom: 2px solid #333;
+    margin-bottom: 0 !important;
+}
+
+.transport-cost-table .table-header .col-4 {
+    padding: 0.5rem;
+    min-height: 40px;
+}
+
+.transport-cost-table .row {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease;
+}
+
+.transport-cost-table .row:last-child {
+    border-bottom: none;
+}
+
+.transport-cost-table .row:hover {
+    background-color: rgba(247, 188, 81, 0.05);
+    border-radius: 8px;
+}
+
+.transport-cost-table .col-4 {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+/* 第一欄：地區名稱 */
+.transport-cost-table .col-4:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* 第二欄：車馬費 */
+.transport-cost-table .col-4:nth-child(2) {
+    font-weight: 600;
+}
+
+.transport-cost-table .col-4:nth-child(2).text-success {
+    color: #28a745 !important;
+}
+
+/* 第三欄：備註 */
+.transport-cost-table .col-4:last-child {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 響應式設計 - 車馬費網格表格 */
+
+/* 大螢幕 (≥1200px) */
+@media (min-width: 1200px) {
+    .transport-cost-table .col-4 {
+        font-size: 1rem;
+        min-height: 40px;
+    }
+    
+    .transport-cost-table .row {
+        padding: 0.8rem 0;
+    }
+}
+
+/* 中等螢幕 (≥768px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .transport-cost-table .col-4 {
+        font-size: 0.95rem;
+        min-height: 40px;
+    }
+    
+    .transport-cost-table .row {
+        padding: 1rem 0;
+    }
+}
+
+/* 小螢幕 (≤767px) */
+@media (max-width: 767px) {
+    .transport-cost-table .row {
+        padding: 0.8rem 0;
+        margin: 0 0.5rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.95rem;
+        min-height: 40px;
+        padding: 0.4rem;
+    }
+    
+    .transport-cost-table .col-4:last-child {
+        font-size: 0.9rem;
+    }
+    
+    #transport-cost h3.h4 {
+        font-size: 1.25rem;
+    }
+    
+    #transport-cost .fas.fa-car {
+        font-size: 2.5rem;
+    }
+}
+
+/* 超小螢幕 (≤576px) */
+@media (max-width: 576px) {
+    .transport-cost-table .row {
+        padding: 0.6rem 0;
+        margin: 0 0.25rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.9rem;
+        min-height: 50px;
+        padding: 0.3rem;
+    }
+    
+    .transport-cost-table .col-4:last-child {
+        font-size: 0.85rem;
+    }
+}
+
+/* iPhone 14 Pro 等小螢幕設備優化 (≤414px) */
+@media (max-width: 414px) {
+    .transport-cost-table .row {
+        padding: 0.5rem 0;
+        margin: 0 0.2rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.85rem;
+        min-height: 45px;
+        padding: 0.25rem;
+    }
+    
+    .transport-cost-table .col-4:last-child {
+        font-size: 0.8rem;
+    }
+}
+
+/* 極小螢幕設備 (≤375px) - iPhone SE, iPhone 12/13 mini 等 */
+@media (max-width: 375px) {
+    .transport-cost-table .row {
+        padding: 0.4rem 0;
+        margin: 0 0.15rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.8rem;
+        min-height: 40px;
+        padding: 0.2rem;
+    }
+    
+    .transport-cost-table .col-4:last-child {
+        font-size: 0.75rem;
+    }
+}
+
+/* 超小螢幕 (≤480px) - 進一步優化 */
+@media (max-width: 480px) {
+    .transport-cost-table .row {
+        padding: 0.5rem 0;
+        margin: 0 0.2rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.85rem;
+        min-height: 45px;
+        padding: 0.25rem;
+    }
+}
+
+/* 超小螢幕 (≤400px) - 極小螢幕優化 */
+@media (max-width: 400px) {
+    .transport-cost-table .row {
+        padding: 0.4rem 0;
+        margin: 0 0.15rem;
+    }
+    
+    .transport-cost-table .col-4 {
+        font-size: 0.8rem;
+        min-height: 40px;
+        padding: 0.2rem;
+    }
+    
+    .transport-cost-table .col-4:last-child {
+        font-size: 0.75rem;
+    }
+} 
+
+/* ===== 統一文字區塊字體大小 ===== */
+/* 簡化響應式字體大小控制，避免重複設定 */
+
+@media (min-width: 1200px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p,
+    .story-text p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p,
+    .story-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p,
+    .story-text p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-story .story-text p,
+    .pricing-section .story-text p,
+    .memories-section .story-text p,
+    section.about-story .story-text p,
+    section.pricing-section .story-text p,
+    .story-text p {
+        font-size: 0.85rem;
+    }
+} 
