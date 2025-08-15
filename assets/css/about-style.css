@@ -57,9 +57,6 @@ body {
     border-color: #e5a93c !important;
 }
 
-.bg-gradient {
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-}
 
 .section-title {
     font-family: 'ABeeZee', sans-serif;
