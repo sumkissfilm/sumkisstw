@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of main pages
+Allow: /index.html
+Allow: /about.html
+Allow: /faq.html
+Allow: /lovestories.html
+Allow: /price.html
+
+# Allow crawling of assets
+Allow: /assets/
+Allow: /images/
+
+# Allow crawling of CSS and JavaScript files
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Allow crawling of image files
+Allow: /images/hero/
+Allow: /images/body002/
+Allow: /images/favicon/
+Allow: /images/header/
+Allow: /images/v1/
+
+# Disallow crawling of video files (optional - remove if you want videos indexed)
+Disallow: /images/hero/*.mp4
+
+# Sitemap location
+Sitemap: https://www.sumkiss.tw/sitemap.xml
+
+# Crawl delay (optional - helps prevent overwhelming the server)
+Crawl-delay: 1
