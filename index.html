@@ -15,23 +15,56 @@
 
     <meta name="google-site-verification" content="m05wg_RvWJZa5j0PLiwXjgB42Ul4o3ZdmLKCBmqbrYs" />
     
-    <!-- ===== EXTERNAL STYLESHEETS ===== -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+    <!-- ===== CRITICAL CSS PRELOAD ===== -->
+    <!-- 預載入關鍵 CSS 資源 -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
-    <!-- ===== LOCAL STYLESHEETS ===== -->
+    <!-- ===== LOCAL STYLESHEETS WITH PRELOAD ===== -->
     <!-- 主要樣式檔案 - 包含全域樣式、各區塊樣式、響應式設計 -->
-    <link rel="stylesheet" href="assets/css/home-style.css">
+    <link rel="preload" href="assets/css/home-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <!-- 頁首導航樣式檔案 - 包含 header、導航列、漢堡選單、選單動畫、社群圖示 -->
-    <link rel="stylesheet" href="assets/css/home-header-navigation.css">
+    <link rel="preload" href="assets/css/home-header-navigation.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <!-- Footer 樣式檔案 - 包含頁尾樣式、響應式設計、無障礙功能 -->
-    <link rel="stylesheet" href="assets/css/home-footer.css">
+    <link rel="preload" href="assets/css/home-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
-    <!-- ===== LOADING ANIMATION STYLES ===== -->
-    <!-- 載入動畫樣式 - 內嵌在 HTML 中，包含載入畫面、進度條、淡出動畫 -->
+    <!-- ===== FALLBACK FOR CSS LOADING ===== -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap">
+        <link rel="stylesheet" href="assets/css/home-style.css">
+        <link rel="stylesheet" href="assets/css/home-header-navigation.css">
+        <link rel="stylesheet" href="assets/css/home-footer.css">
+    </noscript>
+    
+    <!-- ===== CRITICAL CSS INLINE ===== -->
+    <!-- 關鍵 CSS 樣式 - 內嵌在 HTML 中，避免轉譯封鎖 -->
     <style>
-        /* Loading Animation Container */
+        /* Critical CSS - 關鍵渲染路徑樣式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 全域字體設定 */
+        * {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* 載入動畫樣式 - 必須立即顯示 */
         .loader-wrapper {
             position: fixed;
             top: 0;
@@ -47,7 +80,6 @@
             transition: opacity 1.2s ease-out;
         }
 
-        /* Prevent Scrolling During Loading */
         body.loading {
             overflow: hidden;
             position: fixed;
@@ -55,13 +87,13 @@
             height: 100%;
         }
 
-        /* Loading Logo */
         .loader-logo {
             width: 300px;
             margin-bottom: 30px;
+            max-width: 100%;
+            height: auto;
         }
 
-        /* Loading Container */
         .loading-container {
             display: flex;
             flex-direction: column;
@@ -69,7 +101,6 @@
             gap: 10px;
         }
 
-        /* Loading Progress Bar */
         .loading-bar {
             width: 200px;
             height: 3px;
@@ -91,52 +122,89 @@
             border-radius: 3px;
         }
 
-        /* Loading Percentage Text */
         .loading-percentage {
             font-size: 14px;
             color: #f7bc51;
             text-align: center;
         }
 
-        /* Loading Animation Keyframes */
         @keyframes loading {
-            0% {
-                left: -30%;
-            }
-            100% {
-                left: 100%;
-            }
+            0% { left: -30%; }
+            100% { left: 100%; }
         }
 
-        /* Fade Out Animation */
         .loader-wrapper.fade-out {
             opacity: 0;
             pointer-events: none;
         }
 
-        /* Responsive Loading Logo */
-        .loader-wrapper .loader-logo {
-            max-width: 100%;
-            height: auto;
-            width: 300px;
+        /* 頁首導航基礎樣式 */
+        .navbar {
+            background: transparent;
+            transition: background-color 0.3s ease;
+            padding: 1rem 0;
         }
 
-        /* Responsive Design for Loading */
-        @media screen and (max-width: 1200px) {
-            .loader-wrapper .loader-logo {
-                width: 300px;
-            }
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
         }
 
-        @media screen and (max-width: 992px) {
-            .loader-wrapper .loader-logo {
-                width: 300px;
-            }
+        /* Hero 區塊基礎樣式 */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
 
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 基礎按鈕樣式 - 完全恢復原本設計 */
+        .text-button {
+            display: inline-block;
+            width: 200px;
+            height: 43px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .text-button:hover {
+            background-color: #f7bc51;
+            color: #fff;
+            border-color: #f7bc51;
+        }
+
+        /* 響應式基礎樣式 */
         @media screen and (max-width: 768px) {
-            .loader-wrapper .loader-logo {
-                width: 300px;
+            .hero {
+                height: 70vh;
+            }
+            
+            .navbar-brand img {
+                height: 35px;
+            }
+            
+            /* 手機版按鈕樣式 */
+            .text-button {
+                width: 120px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 13px;
             }
         }
 
@@ -233,7 +301,7 @@
         <!-- 主要橫幅區塊 - 使用 style.css 中的 .hero 樣式 -->
         <!-- 由 scroll.js 監控滾動位置，控制頁首背景色變化 -->
         <section class="hero">
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="auto" controls="false">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="metadata" controls="false">
                 <!-- 高碼流影片 - 優先載入 -->
                 <source src="images/hero/web_hq.mp4" type="video/mp4" media="(min-width: 768px)">
                 <!-- 低碼流影片 - 用於小螢幕或慢速網路 -->
@@ -260,10 +328,10 @@
         <section class="body002">
             <div class="image-container">
                 <div class="image-left">
-                    <img src="images/hero/0317_16.jpg" alt="愛情故事攝影作品">
+                    <img src="images/hero/0317_16.jpg" alt="愛情故事攝影作品" loading="lazy">
                 </div>
                 <div class="image-right">
-                    <img src="images/hero/0317_20.jpg" alt="婚禮紀實攝影作品">
+                    <img src="images/hero/0317_20.jpg" alt="婚禮紀實攝影作品" loading="lazy">
                 </div>
             </div>
         </section>
@@ -289,7 +357,8 @@
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
-                            allowfullscreen>
+                            allowfullscreen
+                            loading="lazy">
                     </iframe>
                 </div>
                 
@@ -303,7 +372,8 @@
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
+                                allowfullscreen
+                                loading="lazy">
                         </iframe>
                     </div>
                     
@@ -315,7 +385,8 @@
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
+                                allowfullscreen
+                                loading="lazy">
                         </iframe>
                     </div>
                 </div>
@@ -330,7 +401,8 @@
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
+                        allowfullscreen
+                        loading="lazy">
                     </iframe>
                     </div>
                     
@@ -342,7 +414,8 @@
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
-                            allowfullscreen>
+                            allowfullscreen
+                            loading="lazy">
                         </iframe>
                     </div>
                 </div>
@@ -355,7 +428,8 @@
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
+                    allowfullscreen
+                    loading="lazy">
                 </iframe>
                 </div>
             </div>
@@ -403,19 +477,19 @@
 
     <!-- ===== SCRIPTS ===== -->
     
-    <!-- External Scripts -->
+    <!-- External Scripts with Async/Defer -->
     <!-- Bootstrap JavaScript - 提供導航列響應式功能 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <!-- Instagram Embed Script - 用於 Instagram 內容嵌入 -->
     <script async src="//www.instagram.com/embed.js"></script>
     
-    <!-- Local Scripts -->
+    <!-- Local Scripts with Defer -->
     <!-- 主要 JavaScript 檔案 - 包含導航選單、滾動效果、互動功能 -->
-    <script src="assets/js/hmoe-main.js"></script>
+    <script src="assets/js/hmoe-main.js" defer></script>
     <!-- 滾動效果 JavaScript 檔案 - 專門處理頁首滾動背景色變化 -->
-    <script src="assets/js/home-scroll.js"></script>
+    <script src="assets/js/home-scroll.js" defer></script>
     <!-- Footer JavaScript 檔案 - 包含頁尾互動功能、動畫效果、無障礙功能 -->
-    <script src="assets/js/home-footer.js"></script>
+    <script src="assets/js/home-footer.js" defer></script>
     
     <!-- Loading Animation Script -->
     <!-- 載入動畫＆影片播放 JavaScript - 內嵌在 HTML 中，控制載入進度、淡出效果及自動播放功能 -->

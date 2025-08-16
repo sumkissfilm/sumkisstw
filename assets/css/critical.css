@@ -1,0 +1,186 @@
+/* Critical CSS - 關鍵渲染路徑樣式 */
+/* 這個文件包含頁面首屏渲染所需的最重要樣式 */
+
+/* 基礎重置和字體 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 全域字體設定 */
+        * {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+/* 載入動畫樣式 - 必須立即顯示 */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1.2s ease-out;
+}
+
+body.loading {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.loader-logo {
+    width: 300px;
+    margin-bottom: 30px;
+    max-width: 100%;
+    height: auto;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 3px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: #f7bc51;
+    animation: loading 1.5s ease-in-out infinite;
+    border-radius: 3px;
+}
+
+.loading-percentage {
+    font-size: 14px;
+    color: #f7bc51;
+    text-align: center;
+}
+
+@keyframes loading {
+    0% { left: -30%; }
+    100% { left: 100%; }
+}
+
+.loader-wrapper.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 響應式載入動畫 */
+@media screen and (max-width: 576px) {
+    .loader-wrapper .loader-logo {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .loader-wrapper .loader-logo {
+        width: 200px;
+    }
+}
+
+/* 頁首導航基礎樣式 */
+.navbar {
+    background: transparent;
+    transition: background-color 0.3s ease;
+    padding: 1rem 0;
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+}
+
+/* Hero 區塊基礎樣式 */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+        /* 基礎按鈕樣式 - 完全恢復原本設計，使用 !important 確保優先級 */
+        .text-button {
+            display: inline-block !important;
+            width: 200px !important;
+            height: 43px !important;
+            line-height: 40px !important;
+            text-align: center !important;
+            background-color: #fff !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+            border: 1px solid #000 !important;
+            transition: all 0.3s ease !important;
+            border-radius: 25px !important;
+        }
+
+        .text-button:hover {
+            background-color: #f7bc51 !important;
+            color: #fff !important;
+            border-color: #f7bc51 !important;
+        }
+
+/* 響應式基礎樣式 */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+    
+    .navbar-brand img {
+        height: 35px;
+    }
+    
+            /* 手機版按鈕樣式 - 完全恢復原本設計，使用 !important 確保優先級 */
+        .text-button {
+            width: 120px !important;
+            height: 35px !important;
+            line-height: 35px !important;
+            font-size: 13px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .text-button:last-child {
+            margin-bottom: 0 !important;
+        }
+}
