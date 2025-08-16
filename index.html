@@ -16,10 +16,10 @@
     <meta name="google-site-verification" content="m05wg_RvWJZa5j0PLiwXjgB42Ul4o3ZdmLKCBmqbrYs" />
     
     <!-- ===== CRITICAL CSS PRELOAD ===== -->
-    <!-- 預載入關鍵 CSS 資源 -->
+    <!-- 預載入關鍵 CSS 資源，使用更高效的載入方式 -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- ===== LOCAL STYLESHEETS WITH PRELOAD ===== -->
     <!-- 主要樣式檔案 - 包含全域樣式、各區塊樣式、響應式設計 -->
@@ -494,112 +494,104 @@
     <!-- Loading Animation Script -->
     <!-- 載入動畫＆影片播放 JavaScript - 內嵌在 HTML 中，控制載入進度、淡出效果及自動播放功能 -->
     <script>
-        // Loading Animation Handler
+        // Loading Animation Handler - 優化版本，減少阻塞
         window.addEventListener('load', function() {
             const loader = document.querySelector('.loader-wrapper');
             const percentage = document.querySelector('.loading-percentage');
             const heroVideo = document.querySelector('.hero-video');
-            let progress = 0;
             
             // Add loading class to body to prevent scrolling
             document.body.classList.add('loading');
             
-            // Simulate loading progress
-            const interval = setInterval(() => {
-                progress += 1;
-                percentage.textContent = progress + '%';
+            // 使用 requestAnimationFrame 優化進度更新
+            let progress = 0;
+            const animateProgress = () => {
+                progress += 2; // 加快進度，減少執行次數
+                percentage.textContent = Math.min(progress, 100) + '%';
                 
-                if (progress >= 100) {
-                    clearInterval(interval);
+                if (progress < 100) {
+                    requestAnimationFrame(animateProgress);
+                } else {
+                    // 載入完成，使用 setTimeout 避免阻塞
                     setTimeout(() => {
                         loader.classList.add('fade-out');
-                        // Remove loading class to restore scrolling
                         document.body.classList.remove('loading');
                         
-                        // 載入動畫結束後，開始播放影片
+                        // 延遲執行影片播放，避免阻塞渲染
                         if (heroVideo) {
-                            console.log('載入動畫完成，開始播放影片');
-                            startVideoPlayback();
+                            setTimeout(() => {
+                                startVideoPlayback();
+                            }, 100);
                         }
                     }, 200);
                 }
-            }, 20);
+            };
+            
+            // 使用 requestAnimationFrame 開始動畫
+            requestAnimationFrame(animateProgress);
         });
         
-        // 影片播放函數
+        // 影片播放函數 - 優化版本，減少阻塞
         function startVideoPlayback() {
             const heroVideo = document.querySelector('.hero-video');
             if (!heroVideo) return;
             
-            // 檢測是否為Safari瀏覽器
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            
-            console.log('開始影片播放，瀏覽器檢測:', { isSafari, isIOS });
-            
-            // 確保影片屬性設置正確
-            heroVideo.muted = true;
-            heroVideo.volume = 0;
-            heroVideo.loop = true;
-            
-            // 嘗試播放影片
-            const playVideo = () => {
-                heroVideo.play().then(() => {
-                    console.log('影片播放成功');
-                }).catch(error => {
-                    console.log('影片播放失敗:', error);
-                    // 如果播放失敗，等待一下再重試
-                    setTimeout(() => {
-                        heroVideo.play().catch(e => {
-                            console.log('重試播放失敗:', e);
-                        });
-                    }, 1000);
-                });
+            // 使用 requestIdleCallback 在瀏覽器空閒時執行檢測
+            const runWhenIdle = (callback) => {
+                if (window.requestIdleCallback) {
+                    requestIdleCallback(callback, { timeout: 1000 });
+                } else {
+                    setTimeout(callback, 100);
+                }
             };
             
-            // 立即嘗試播放
-            playVideo();
-            
-            // Safari特殊處理：添加用戶互動觸發播放
-            if (isSafari || isIOS) {
-                console.log('Safari/iOS檢測到，添加用戶互動觸發播放');
+            // 延遲執行瀏覽器檢測，避免阻塞主線程
+            runWhenIdle(() => {
+                // 檢測是否為Safari瀏覽器
+                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
                 
-                // 添加觸控和點擊事件監聽，觸發一次播放後移除
-                document.addEventListener('touchstart', tryPlayOnce, { passive: true });
-                document.addEventListener('click', tryPlayOnce, { passive: true });
+                // 確保影片屬性設置正確
+                heroVideo.muted = true;
+                heroVideo.volume = 0;
+                heroVideo.loop = true;
                 
-                function tryPlayOnce() {
-                    if (heroVideo && heroVideo.paused) {
-                        console.log('用戶互動觸發，嘗試播放影片');
-                        heroVideo.play().then(() => {
-                            console.log('用戶互動觸發播放成功');
-                        }).catch(error => {
-                            console.log('用戶互動觸發播放失敗:', error);
-                        });
-                    }
-                    // 一次成功後就移除監聽，避免多次觸發
-                    document.removeEventListener('touchstart', tryPlayOnce);
-                    document.removeEventListener('click', tryPlayOnce);
-                }
-            }
-            
-            // 監聽影片結束事件，確保循環播放
-            heroVideo.addEventListener('ended', function() {
-                heroVideo.currentTime = 0;
-                heroVideo.play().catch(e => {
-                    console.log('循環播放失敗:', e);
-                });
-            });
-            
-            // 監聽影片暫停事件，自動重新播放
-            heroVideo.addEventListener('pause', function() {
-                if (!heroVideo.ended) {
-                    heroVideo.play().catch(e => {
-                        console.log('重新播放失敗:', e);
+                // 嘗試播放影片
+                const playVideo = () => {
+                    heroVideo.play().catch(error => {
+                        // 如果播放失敗，延遲重試
+                        setTimeout(() => {
+                            heroVideo.play().catch(() => {});
+                        }, 1000);
                     });
-                    }
-                });
-            }
+                };
+                
+                // 立即嘗試播放
+                playVideo();
+                
+                // Safari特殊處理：添加用戶互動觸發播放
+                if (isSafari || isIOS) {
+                    // 使用被動事件監聽，提高性能
+                    const tryPlayOnce = () => {
+                        if (heroVideo && heroVideo.paused) {
+                            heroVideo.play().catch(() => {});
+                        }
+                        // 一次成功後就移除監聽
+                        document.removeEventListener('touchstart', tryPlayOnce, { passive: true });
+                        document.removeEventListener('click', tryPlayOnce, { passive: true });
+                    };
+                    
+                    document.addEventListener('touchstart', tryPlayOnce, { passive: true });
+                    document.addEventListener('click', tryPlayOnce, { passive: true });
+                }
+                
+                // 簡化事件監聽，減少阻塞
+                heroVideo.addEventListener('ended', () => {
+                    heroVideo.currentTime = 0;
+                    heroVideo.play().catch(() => {});
+                }, { passive: true });
+            });
+        }
     </script>
 
 
