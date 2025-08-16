@@ -143,17 +143,7 @@
             pointer-events: none;
         }
 
-        /* 頁首導航基礎樣式 */
-        .navbar {
-            background: transparent;
-            transition: background-color 0.3s ease;
-            padding: 1rem 0;
-        }
 
-        .navbar-brand img {
-            height: 40px;
-            width: auto;
-        }
 
         /* Hero 區塊基礎樣式 */
         .hero {
@@ -224,10 +214,6 @@
                 max-height: 900px; /* 最大高度限制 */
             }
             
-            .navbar-brand img {
-                height: 35px; /* 平板版高度 */
-            }
-            
             /* 手機版按鈕樣式 */
             .text-button {
                 width: 120px;
@@ -258,13 +244,6 @@
                 height: calc(100vw * 1.7); /* 直式3:5比例，高度是寬度的1.67倍 */
                 min-height: 500px; /* 最小高度限制 */
                 max-height: 750px; /* 最大高度限制 */
-            }
-        }
-
-        /* 手機版樣式 (≤576px) */
-        @media screen and (max-width: 576px) {
-            .navbar-brand img {
-                height: 30px; /* 手機版正確高度 */
             }
         }
 
