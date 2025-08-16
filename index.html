@@ -30,9 +30,12 @@
     <link rel="preload" href="assets/css/home-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- ===== MOBILE OPTIMIZATION ===== -->
-    <!-- 手機版關鍵圖片預載入 -->
-    <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)">
-    <link rel="preload" href="images/header/summerkiss-logo.png" as="image">
+    <!-- 手機版關鍵圖片預載入 - 使用 fetchpriority="high" -->
+    <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)" fetchpriority="high">
+    <link rel="preload" href="images/header/summerkiss-logo.png" as="image" fetchpriority="high">
+    
+    <!-- 關鍵字體預載入 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" as="style" fetchpriority="high">
     
     <!-- ===== FALLBACK FOR CSS LOADING ===== -->
     <noscript>
@@ -170,6 +173,7 @@
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
         }
 
         /* 手機版背景圖片 - 優先顯示，避免影片載入延遲 */
@@ -343,9 +347,10 @@
         <!-- 由 scroll.js 監控滾動位置，控制頁首背景色變化 -->
         <section class="hero">
             <!-- 手機版優先顯示背景圖片，避免影片載入延遲 -->
+            <!-- 使用 fetchpriority="high" 優先載入 -->
             <div class="hero-background-image" aria-hidden="true"></div>
             
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="none" controls="false">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="none" controls="false" fetchpriority="low">
                 <!-- 高碼流影片 - 桌面版優先載入 -->
                 <source src="images/hero/web_hq.mp4" type="video/mp4" media="(min-width: 768px)">
                 <!-- 低碼流影片 - 手機版延遲載入 -->
@@ -551,8 +556,8 @@
             document.body.classList.add('loading');
             
             // 手機版使用更快的載入策略
-            const progressIncrement = isMobile ? 4 : 2;
-            const finalDelay = isMobile ? 100 : 200;
+            const progressIncrement = isMobile ? 6 : 2; // 手機版更快
+            const finalDelay = isMobile ? 50 : 200; // 手機版更短延遲
             
             // 使用 requestAnimationFrame 優化進度更新
             let progress = 0;
