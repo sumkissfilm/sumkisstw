@@ -30,12 +30,9 @@
     <link rel="preload" href="assets/css/home-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- ===== MOBILE OPTIMIZATION ===== -->
-    <!-- 手機版關鍵圖片預載入 - 使用 fetchpriority="high" -->
-    <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)" fetchpriority="high">
-    <link rel="preload" href="images/header/summerkiss-logo.png" as="image" fetchpriority="high">
-    
-    <!-- 關鍵字體預載入 -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" as="style" fetchpriority="high">
+    <!-- 手機版關鍵圖片預載入 -->
+    <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)">
+    <link rel="preload" href="images/header/summerkiss-logo.png" as="image">
     
     <!-- ===== FALLBACK FOR CSS LOADING ===== -->
     <noscript>
@@ -350,7 +347,7 @@
             <!-- 使用 fetchpriority="high" 優先載入 -->
             <div class="hero-background-image" aria-hidden="true"></div>
             
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="none" controls="false" fetchpriority="low">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline webkit-video-playable-inline preload="none" controls="false">
                 <!-- 高碼流影片 - 桌面版優先載入 -->
                 <source src="images/hero/web_hq.mp4" type="video/mp4" media="(min-width: 768px)">
                 <!-- 低碼流影片 - 手機版延遲載入 -->
@@ -543,51 +540,36 @@
     <!-- Loading Animation Script -->
     <!-- 載入動畫＆影片播放 JavaScript - 內嵌在 HTML 中，控制載入進度、淡出效果及自動播放功能 -->
     <script>
-        // Loading Animation Handler - 優化版本，減少阻塞
+        // Loading Animation Handler - 簡化版本，減少阻塞
         window.addEventListener('load', function() {
             const loader = document.querySelector('.loader-wrapper');
             const percentage = document.querySelector('.loading-percentage');
             const heroVideo = document.querySelector('.hero-video');
             
-            // 檢測是否為手機版
-            const isMobile = window.innerWidth <= 768;
-            
             // Add loading class to body to prevent scrolling
             document.body.classList.add('loading');
             
-            // 手機版使用更快的載入策略
-            const progressIncrement = isMobile ? 6 : 2; // 手機版更快
-            const finalDelay = isMobile ? 50 : 200; // 手機版更短延遲
-            
-            // 使用 requestAnimationFrame 優化進度更新
+            // 簡化的進度更新，減少阻塞
             let progress = 0;
             const animateProgress = () => {
-                progress += progressIncrement;
+                progress += 3; // 統一的進度增量
                 percentage.textContent = Math.min(progress, 100) + '%';
                 
                 if (progress < 100) {
                     requestAnimationFrame(animateProgress);
                 } else {
-                    // 載入完成，使用 setTimeout 避免阻塞
+                    // 載入完成
                     setTimeout(() => {
                         loader.classList.add('fade-out');
                         document.body.classList.remove('loading');
                         
-                        // 手機版延遲載入影片，優先顯示背景圖片
+                        // 延遲載入影片
                         if (heroVideo) {
-                            if (isMobile) {
-                                // 手機版延遲 500ms 載入影片，讓背景圖片先顯示
-                                setTimeout(() => {
-                                    startVideoPlayback();
-                                }, 500);
-                            } else {
-                                // 桌面版正常載入
-                                setTimeout(() => {
-                                    startVideoPlayback();
-                                }, 100);
-                            }
+                            setTimeout(() => {
+                                startVideoPlayback();
+                            }, 200);
                         }
-                    }, finalDelay);
+                    }, 200);
                 }
             };
             
@@ -595,65 +577,28 @@
             requestAnimationFrame(animateProgress);
         });
         
-        // 影片播放函數 - 優化版本，減少阻塞
+        // 影片播放函數 - 簡化版本，減少阻塞
         function startVideoPlayback() {
             const heroVideo = document.querySelector('.hero-video');
             if (!heroVideo) return;
             
-            // 使用 requestIdleCallback 在瀏覽器空閒時執行檢測
-            const runWhenIdle = (callback) => {
-                if (window.requestIdleCallback) {
-                    requestIdleCallback(callback, { timeout: 1000 });
-                } else {
-                    setTimeout(callback, 100);
-                }
-            };
+            // 簡化的影片播放邏輯
+            heroVideo.muted = true;
+            heroVideo.volume = 0;
+            heroVideo.loop = true;
             
-            // 延遲執行瀏覽器檢測，避免阻塞主線程
-            runWhenIdle(() => {
-                // 檢測是否為Safari瀏覽器
-                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                
-                // 確保影片屬性設置正確
-                heroVideo.muted = true;
-                heroVideo.volume = 0;
-                heroVideo.loop = true;
-                
-                // 嘗試播放影片
-                const playVideo = () => {
-                    heroVideo.play().catch(error => {
-                        // 如果播放失敗，延遲重試
-                        setTimeout(() => {
-                            heroVideo.play().catch(() => {});
-                        }, 1000);
-                    });
-                };
-                
-                // 立即嘗試播放
-                playVideo();
-                
-                // Safari特殊處理：添加用戶互動觸發播放
-                if (isSafari || isIOS) {
-                    // 使用被動事件監聽，提高性能
-                    const tryPlayOnce = () => {
-                        if (heroVideo && heroVideo.paused) {
-                            heroVideo.play().catch(() => {});
-                        }
-                        // 一次成功後就移除監聽
-                        document.removeEventListener('touchstart', tryPlayOnce, { passive: true });
-                        document.removeEventListener('click', tryPlayOnce, { passive: true });
-                    };
-                    
-                    document.addEventListener('touchstart', tryPlayOnce, { passive: true });
-                    document.addEventListener('click', tryPlayOnce, { passive: true });
-                }
-                
-                // 簡化事件監聽，減少阻塞
-                heroVideo.addEventListener('ended', () => {
-                    heroVideo.currentTime = 0;
+            // 嘗試播放影片
+            heroVideo.play().catch(() => {
+                // 如果播放失敗，延遲重試
+                setTimeout(() => {
                     heroVideo.play().catch(() => {});
-                }, { passive: true });
+                }, 1000);
+            });
+            
+            // 簡化的事件監聽
+            heroVideo.addEventListener('ended', () => {
+                heroVideo.currentTime = 0;
+                heroVideo.play().catch(() => {});
             });
         }
     </script>
