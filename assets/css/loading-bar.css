@@ -1,0 +1,46 @@
+/* Loading Bar Styles */
+.loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #f7bc51, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 300% 100%;
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.loading-bar.active {
+    transform: translateX(0);
+}
+
+.loading-bar.complete {
+    transform: translateX(0);
+    background: #f7bc51;
+}
+
+/* Loading Bar Animation */
+@keyframes loadingGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loading-bar.loading {
+    animation: loadingGradient 2s ease infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .loading-bar {
+        height: 2px;
+    }
+}
