@@ -876,3 +876,11 @@ body {
 .memories-carousel .memories-carousel-img.active {
     transition: all 3.5s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
 } 
+
+/* ===== TRANSPORT COST TEXT RESPONSIVE FONT SIZES ===== */
+/* 確保 transport cost 區塊下方的文字與車馬費資訊提示字體大小一致 */
+/* 所有斷點使用相同的字體大小，便於後續統一修改 */
+
+.text-muted.small {
+    font-size: 0.825rem !important; /* 約 12px */
+} 
