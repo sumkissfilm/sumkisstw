@@ -100,14 +100,22 @@
             .body004 .video-thumbnail {
                 width: 100% !important;
                 max-width: 100% !important;
+                height: 250px !important; /* 固定高度，確保所有影片一致 */
+                min-height: 250px !important;
             }
             
             .body004 .video-placeholder img,
             .body004 .video-thumbnail img {
                 width: 100% !important;
                 max-width: 100% !important;
-                height: auto !important;
+                height: 100% !important; /* 圖片填滿容器高度 */
                 object-fit: cover !important;
+            }
+            
+            /* 確保所有影片項目都有相同高度 */
+            .body004 .image-item {
+                height: 250px !important;
+                min-height: 250px !important;
             }
         }
 
@@ -315,11 +323,35 @@
             .loader-wrapper .loader-logo {
                 width: 250px;
             }
+            
+            /* 小手機版影片高度調整 */
+            .body004 .video-placeholder,
+            .body004 .video-thumbnail {
+                height: 220px !important;
+                min-height: 220px !important;
+            }
+            
+            .body004 .image-item {
+                height: 220px !important;
+                min-height: 220px !important;
+            }
         }
 
         @media screen and (max-width: 400px) {
             .loader-wrapper .loader-logo {
                 width: 200px;
+            }
+            
+            /* 超小手機版影片高度調整 */
+            .body004 .video-placeholder,
+            .body004 .video-thumbnail {
+                height: 200px !important;
+                min-height: 200px !important;
+            }
+            
+            .body004 .image-item {
+                height: 200px !important;
+                min-height: 200px !important;
             }
         }
 
