@@ -471,12 +471,26 @@
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
         }
 
         .video-placeholder iframe.loaded {
             opacity: 1;
             transform: scale(1);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 手機版 iframe 優化 */
+        @media screen and (max-width: 768px) {
+            .video-placeholder iframe {
+                min-height: 200px;
+                aspect-ratio: 16/9;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
         }
 
         /* 響應式調整 */
@@ -1015,7 +1029,56 @@
             // 觀察所有需要動畫的元素
             const fadeItems = document.querySelectorAll('.fade-in-item');
             fadeItems.forEach(item => observer.observe(item));
+            
+            // 手機版觸控事件優化
+            if (window.innerWidth <= 768) {
+                optimizeMobileTouch();
+            }
+            
+            // 監聽視窗大小變化，動態調整觸控優化
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    optimizeMobileTouch();
+                }
+            });
         });
+        
+        // 手機版觸控優化函數
+        function optimizeMobileTouch() {
+            const videoPlaceholders = document.querySelectorAll('.video-placeholder');
+            
+            videoPlaceholders.forEach(placeholder => {
+                // 移除舊的觸控事件監聽器
+                placeholder.removeEventListener('touchstart', handleTouchStart);
+                placeholder.removeEventListener('touchend', handleTouchEnd);
+                
+                // 添加新的觸控事件監聽器
+                placeholder.addEventListener('touchstart', handleTouchStart, { passive: true });
+                placeholder.addEventListener('touchend', handleTouchEnd, { passive: true });
+            });
+        }
+        
+        // 觸控開始事件
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const placeholder = e.currentTarget;
+            placeholder.style.transform = 'scale(0.98)';
+            placeholder.style.transition = 'transform 0.1s ease';
+        }
+        
+        // 觸控結束事件
+        function handleTouchEnd(e) {
+            e.preventDefault();
+            const placeholder = e.currentTarget;
+            placeholder.style.transform = 'scale(1)';
+            
+            // 檢查是否有 iframe，如果有則觸發點擊
+            const iframe = placeholder.querySelector('iframe');
+            if (iframe) {
+                console.log('手機版影片觸控點擊');
+                // 可以添加額外的觸控反饋
+            }
+        }
 
         // 蘋果風格的延遲載入影片函數 - 直接顯示 YouTube 影片，跳過載入感覺
         function loadVideo(container) {
@@ -1028,18 +1091,29 @@
             const iframe = document.createElement('iframe');
             iframe.width = '100%';
             
-            // 16:9 比例的高度設定
-            // 主影片（全寬）：1200px × (9/16) = 675px
-            // 側邊影片（半寬）：(600px - 1rem) × (9/16) ≈ 337.5px
-            iframe.height = container.classList.contains('half-width') ? '338' : '675';
+            // 響應式高度設定 - 使用 aspect-ratio 確保在不同螢幕下都保持正確比例
+            iframe.style.aspectRatio = '16/9';
+            iframe.style.height = 'auto';
+            iframe.style.minHeight = '200px'; // 手機版最小高度
             
-            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc`;
+            // 手機版優化的 YouTube 嵌入參數
+            const isMobile = window.innerWidth <= 768;
+            const mobileParams = isMobile ? '&playsinline=1&rel=0&modestbranding=1' : '';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0${mobileParams}`;
+            
             iframe.title = videoTitle;
             iframe.frameBorder = '0';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
             iframe.referrerPolicy = 'strict-origin-when-cross-origin';
             iframe.allowFullscreen = true;
             iframe.loading = 'lazy';
+            
+            // 手機版觸控優化
+            if (isMobile) {
+                iframe.style.touchAction = 'manipulation';
+                iframe.style.webkitUserSelect = 'none';
+                iframe.style.userSelect = 'none';
+            }
             
             // 直接替換為 YouTube 影片，完全跳過載入感覺
             const placeholder = container.querySelector('.video-placeholder');
@@ -1051,11 +1125,19 @@
                 // 影片載入完成後立即顯示，無需額外動畫
                 iframe.addEventListener('load', () => {
                     iframe.classList.add('loaded');
+                    console.log('YouTube 影片載入完成:', videoTitle);
                 });
                 
                 // 如果影片已經載入完成，直接添加 loaded 類別
                 if (iframe.complete) {
                     iframe.classList.add('loaded');
+                }
+                
+                // 手機版點擊事件優化
+                if (isMobile) {
+                    iframe.addEventListener('click', function() {
+                        console.log('手機版影片被點擊:', videoTitle);
+                    });
                 }
             }
         }
