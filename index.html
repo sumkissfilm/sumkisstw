@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- ===== GOOGLE ANALYTICS ===== -->
+    <!-- Google tag (gtag.js) - 網站分析追蹤 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3STE1R5F6M"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-3STE1R5F6M');
     </script>
     
+    <!-- ===== BASIC META TAGS ===== -->
+    <!-- 基本頁面設定 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ===== PAGE TITLE & FAVICON ===== -->
+    <!-- 頁面標題和網站圖示 -->
     <title>Summer Kisses | 影像製作</title>
     <link rel="icon" href="images/favicon/SumKiss.png" type="image/png">
     
     <!-- ===== SEO META TAGS ===== -->
+    <!-- 搜尋引擎優化標籤 -->
     <meta name="description" content="Summer Kisses 專注製作愛情故事。紀錄的不僅僅是你們，是情感，也是時間。『當你忘了攝影機，故事便開始了。』全年度開放預約中~">
     <meta name="keywords" content="愛情故事, 生活側錄, 婚禮預告影片, 輪播影片, 婚禮影片, 情侶寫真, 個人寫真, 求婚紀錄, Summer Kisses, sumkiss">
     <meta name="author" content="Summer Kisses">
     <link rel="canonical" href="https://www.sumkiss.tw/">
-
     <meta name="google-site-verification" content="m05wg_RvWJZa5j0PLiwXjgB42Ul4o3ZdmLKCBmqbrYs" />
     
-    <!-- ===== CRITICAL CSS PRELOAD ===== -->
-    <!-- 預載入關鍵 CSS 資源，使用更高效的載入方式 -->
+    <!-- ===== EXTERNAL CSS PRELOAD ===== -->
+    <!-- 外部 CSS 資源預載入 - 優化載入效能 -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
-    <!-- 字體優化 - 使用 font-display: swap 避免阻塞 -->
+    <!-- ===== FONT OPTIMIZATION ===== -->
+    <!-- 字體載入優化 - 避免阻塞渲染 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- ===== LOCAL STYLESHEETS WITH PRELOAD ===== -->
-    <!-- 主要樣式檔案 - 包含全域樣式、各區塊樣式、響應式設計 -->
+    <!-- ===== LOCAL CSS PRELOAD ===== -->
+    <!-- 本地樣式檔案預載入 -->
     <link rel="preload" href="assets/css/home-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <!-- 頁首導航樣式檔案 - 包含 header、導航列、漢堡選單、選單動畫、社群圖示 -->
     <link rel="preload" href="assets/css/home-header-navigation.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <!-- Footer 樣式檔案 - 包含頁尾樣式、響應式設計、無障礙功能 -->
     <link rel="preload" href="assets/css/home-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <!-- ===== MOBILE OPTIMIZATION ===== -->
-    <!-- 手機版關鍵圖片預載入 - 優化載入優先級 -->
+    <!-- ===== CRITICAL IMAGE PRELOAD ===== -->
+    <!-- 關鍵圖片預載入 - 手機版優先 -->
     <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" href="images/header/summerkiss-logo.png" as="image" fetchpriority="high">
     
-    <!-- 關鍵圖片預載入提示 -->
+    <!-- ===== DNS PREFETCH ===== -->
+    <!-- DNS 預取 - 加速外部資源載入 -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- ===== FALLBACK FOR CSS LOADING ===== -->
+    <!-- ===== CSS FALLBACK ===== -->
+    <!-- CSS 載入失敗時的備用方案 -->
     <noscript>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -66,13 +70,49 @@
     <!-- ===== CRITICAL CSS INLINE ===== -->
     <!-- 關鍵 CSS 樣式 - 內嵌在 HTML 中，避免轉譯封鎖 -->
     <style>
-        /* Critical CSS - 關鍵渲染路徑樣式 */
+        /* ===== GLOBAL RESET & BASE STYLES ===== */
+        /* 全域重置和基礎樣式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* ===== MOBILE VIDEO GRID FIXES ===== */
+        /* 手機版 Video Grid 強制修復樣式 */
+        @media (max-width: 768px) {
+            .body004 .image-item.half-width {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 100% !important;
+                flex: 1 1 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .body004 .middle-images {
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .body004 .video-placeholder,
+            .body004 .video-thumbnail {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .body004 .video-placeholder img,
+            .body004 .video-thumbnail img {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                object-fit: cover !important;
+            }
+        }
 
+        /* ===== BODY & TYPOGRAPHY ===== */
+        /* 主體和字體設定 */
         body {
             font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
@@ -88,6 +128,7 @@
             font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
 
+        /* ===== LOADING ANIMATION ===== */
         /* 載入動畫樣式 - 必須立即顯示 */
         .loader-wrapper {
             position: fixed;
@@ -164,6 +205,7 @@
 
 
 
+        /* ===== HERO SECTION ===== */
         /* Hero 區塊基礎樣式 */
         .hero {
             position: relative;
@@ -204,6 +246,7 @@
             }
         }
 
+        /* ===== BUTTON STYLES ===== */
         /* 基礎按鈕樣式 - 完全恢復原本設計 */
         .text-button {
             display: inline-block;
@@ -226,6 +269,7 @@
             border-color: #f7bc51;
         }
 
+        /* ===== RESPONSIVE DESIGN ===== */
         /* 響應式基礎樣式 */
         @media screen and (max-width: 991px) {
             .hero {
@@ -279,7 +323,7 @@
             }
         }
 
-        /* ===== VIDEO GRID ANIMATION STYLES ===== */
+        /* ===== VIDEO GRID ANIMATION ===== */
         /* 影片格動畫樣式 - 蘋果風格流暢動畫 */
         
         /* 初始狀態 - 完全隱藏，準備優雅出現 */
@@ -528,7 +572,7 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main>
-        <!-- Hero Section -->
+        <!-- ===== HERO SECTION ===== -->
         <!-- 主要橫幅區塊 - 使用 style.css 中的 .hero 樣式 -->
         <!-- 由 scroll.js 監控滾動位置，控制頁首背景色變化 -->
         <section class="hero">
@@ -548,7 +592,7 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
+        <!-- ===== ABOUT US SECTION ===== -->
         <!-- 關於我們區塊 - 使用 style.css 中的 .body001 和 .text-content 樣式 -->
         <section class="body001">
             <div class="text-content">
@@ -558,7 +602,7 @@
             </div>
         </section>
 
-        <!-- Image Gallery Section -->
+        <!-- ===== IMAGE GALLERY SECTION ===== -->
         <!-- 圖片展示區塊 - 使用 style.css 中的 .body002 和 .image-container 樣式 -->
         <section class="body002">
             <div class="image-container">
@@ -571,21 +615,111 @@
             </div>
         </section>
 
-        <!-- Video Portfolio Section -->
-        <!-- 影片作品集區塊 - 使用 style.css 中的 .body004 和 .image-grid 樣式 -->
-        <!-- 使用 youtube-theme.css 優化 YouTube 嵌入影片顯示 -->
+        <!-- ===== VIDEO PORTFOLIO SECTION ===== -->
+        <!-- 影片作品集區塊 - 重新設計的排版，使用內嵌CSS確保間距控制 -->
         <section class="body004">
-            <div class="text-content">
-                <!-- Hidden Japanese Text
-                <p>『カメラの存在を忘れた瞬間に、物語が始まる。』</p>
-                -->
+            <div class="text-content" style="
+                text-align: center;
+                margin: 2.5rem auto 2.5rem auto;
+                padding: 2rem 0;
+                position: relative;
+                z-index: 1;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                max-width: 800px;
+                width: 100%;
+            ">
                 <p>『當你忘了攝影機，故事便開始了。』</p>
             </div>
             
-            <!-- Video Grid -->
-            <div class="image-grid">
+            <!-- Video Grid - 重新設計的排版 -->
+            <div class="image-grid" style="
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+                position: relative;
+                z-index: 1;
+            ">
+            
+            <style>
+                /* 響應式設計 - 直接在HTML中控制間距 */
+                
+                /* 平板版樣式 (≤768px) */
+                @media (max-width: 768px) {
+                    .body004 .text-content {
+                        margin: 2.5rem auto 2.5rem auto !important;
+                        padding: 1.5rem 0 !important;
+                    }
+                    
+                    .image-grid .middle-images {
+                        flex-direction: column !important;
+                        gap: 1.5rem !important;
+                        margin-top: 1.5rem !important;
+                    }
+                    
+                    .image-grid .image-item.half-width {
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+                    
+                    .image-grid .image-item {
+                        margin-top: 1.5rem !important;
+                    }
+                }
+                
+                /* 手機版樣式 (≤576px) */
+                @media (max-width: 576px) {
+                    .body004 .text-content {
+                        margin: 2rem auto 2rem auto !important;
+                        padding: 1.25rem 0 !important;
+                    }
+                    
+                    .image-grid .middle-images {
+                        gap: 1rem !important;
+                        margin-top: 1rem !important;
+                    }
+                    
+                    .image-grid .image-item {
+                        margin-top: 1rem !important;
+                    }
+                }
+                
+                /* 小手機版樣式 (≤400px) */
+                @media (max-width: 400px) {
+                    .body004 .text-content {
+                        margin: 1.5rem auto 1.5rem auto !important;
+                        padding: 1rem 0 !important;
+                    }
+                    
+                    .image-grid .middle-images {
+                        gap: 0.5rem !important;
+                        margin-top: 0.5rem !important;
+                    }
+                    
+                    .image-grid .image-item {
+                        margin-top: 0.5rem !important;
+                    }
+                }
+            </style>
                 <!-- Main Video -->
-                <div class="image-item fade-in-item" data-video-id="I_wuDJb7Sj4" data-video-title="愛情故事 | Syuan & Syun">
+                <div class="image-item fade-in-item" data-video-id="I_wuDJb7Sj4" data-video-title="愛情故事 | Syuan & Syun" style="
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    cursor: pointer;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    background: transparent;
+                    will-change: transform, box-shadow;
+                    margin-bottom: 0;
+                ">
                     <div class="video-placeholder">
                         <div class="video-thumbnail">
                             <img src="https://img.youtube.com/vi/I_wuDJb7Sj4/maxresdefault.jpg" alt="愛情故事 | Syuan & Syun" loading="lazy">
@@ -597,9 +731,28 @@
                 </div>
                 
                 <!-- Middle Videos 01 Container -->
-                <div class="middle-images">
+                <div class="middle-images" style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 2rem;
+                    width: 100%;
+                    position: relative;
+                    z-index: 1;
+                    margin-bottom: 0;
+                    margin-top: 2rem;
+                ">
                     <!-- Left Video -->
-                    <div class="image-item half-width fade-in-item" data-video-id="b8WcgMShfuQ" data-video-title="輕廣告、動態寫真 | yinsyun.li">
+                    <div class="image-item half-width fade-in-item" data-video-id="b8WcgMShfuQ" data-video-title="輕廣告、動態寫真 | yinsyun.li" style="
+                        width: calc(50% - 1rem);
+                        position: relative;
+                        padding-bottom: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        background: transparent;
+                        will-change: transform, box-shadow;
+                    ">
                         <div class="video-placeholder">
                             <div class="video-thumbnail">
                                 <img src="https://img.youtube.com/vi/b8WcgMShfuQ/maxresdefault.jpg" alt="輕廣告、動態寫真 | yinsyun.li" loading="lazy">
@@ -611,7 +764,17 @@
                     </div>
                     
                     <!-- Right Video -->
-                    <div class="image-item half-width fade-in-item" data-video-id="dC6yphLwpsw" data-video-title="輕廣告、動態寫真 | ychiaying_">
+                    <div class="image-item half-width fade-in-item" data-video-id="dC6yphLwpsw" data-video-title="輕廣告、動態寫真 | ychiaying_" style="
+                        width: calc(50% - 1rem);
+                        position: relative;
+                        padding-bottom: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        background: transparent;
+                        will-change: transform, box-shadow;
+                    ">
                         <div class="video-placeholder">
                             <div class="video-thumbnail">
                                 <img src="https://img.youtube.com/vi/dC6yphLwpsw/maxresdefault.jpg" alt="輕廣告、動態寫真 | ychiaying_" loading="lazy">
@@ -624,12 +787,30 @@
                 </div>
                 
                 <!-- Middle Videos 02 Container -->
-                <div class="middle-images">
+                <div class="middle-images" style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 2rem;
+                    width: 100%;
+                    position: relative;
+                    z-index: 1;
+                    margin-bottom: 0;
+                    margin-top: 2rem;
+                ">
                     <!-- Left Video -->
-                    <div class="image-item half-width fade-in-item" data-video-id="Yd-l0udh-0M" data-video-title="愛情故事 | Fan & Min">
+                    <div class="image-item half-width fade-in-item" data-video-id="Yd-l0udh-0M" data-video-title="愛情故事 | Fan & Min" style="
+                        width: calc(50% - 1rem);
+                        position: relative;
+                        padding-bottom: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        background: transparent;
+                        will-change: transform, box-shadow;
+                    ">
                         <div class="video-placeholder">
                             <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/Yd-l0udh-0M/maxresdefault.jpg" alt="愛情故事 | Fan & Min" loading="lazy">
                                 <img src="https://img.youtube.com/vi/Yd-l0udh-0M/maxresdefault.jpg" alt="愛情故事 | Fan & Min" loading="lazy">
                                 <div class="play-button">
                                     <i class="fas fa-play"></i>
@@ -639,7 +820,17 @@
                     </div>
                     
                     <!-- Right Video -->
-                    <div class="image-item half-width fade-in-item" data-video-id="OhZPwT9G6QQ" data-video-title="愛情故事 | Yan & Yu">
+                    <div class="image-item half-width fade-in-item" data-video-id="OhZPwT9G6QQ" data-video-title="愛情故事 | Yan & Yu" style="
+                        width: calc(50% - 1rem);
+                        position: relative;
+                        padding-bottom: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        background: transparent;
+                        will-change: transform, box-shadow;
+                    ">
                         <div class="video-placeholder">
                             <div class="video-thumbnail">
                                 <img src="https://img.youtube.com/vi/OhZPwT9G6QQ/maxresdefault.jpg" alt="愛情故事 | Yan & Yu" loading="lazy">
@@ -652,7 +843,19 @@
                 </div>
                 
                 <!-- Bottom Video -->
-                <div class="image-item fade-in-item" data-video-id="UH9zwGflfBs" data-video-title="愛情故事 | Fu & Ru">
+                <div class="image-item fade-in-item" data-video-id="UH9zwGflfBs" data-video-title="愛情故事 | Fu & Ru" style="
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    cursor: pointer;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    background: transparent;
+                    will-change: transform, box-shadow;
+                    margin-bottom: 0;
+                    margin-top: 2rem;
+                ">
                     <div class="video-placeholder">
                         <div class="video-thumbnail">
                             <img src="https://img.youtube.com/vi/UH9zwGflfBs/maxresdefault.jpg" alt="愛情故事 | Fu & Ru" loading="lazy">
@@ -675,14 +878,16 @@
     <!-- 頁尾區塊 - 使用 css/footer.css 中的 footer 相關樣式 -->
     <footer>
         <div class="footer-content">
-            <!-- Contact Information -->
+            <!-- ===== CONTACT INFORMATION ===== -->
+            <!-- 聯絡資訊區塊 -->
             <div class="footer-section">
                 <p>Instagram：<a href="https://www.instagram.com/sumkiss.film/">sumkiss.film</a></p>
                 <p>商業合作：<a href="mailto:sumkiss.film@gmail.com">sumkiss.film@gmail.com</a></p>
                 <p><a href="https://www.sumkiss.tw/">首頁</a></p>
             </div>
             
-            <!-- Social Media Links -->
+            <!-- ===== SOCIAL MEDIA LINKS ===== -->
+            <!-- 社群媒體連結區塊 -->
             <div class="footer-section">
                 <p>追蹤我們</p>
                 <div class="social-links">
@@ -699,7 +904,8 @@
             </div>
         </div>
         
-        <!-- Copyright -->
+        <!-- ===== COPYRIGHT ===== -->
+        <!-- 版權資訊區塊 -->
         <div class="footer-bottom">
             <p>Copyright &copy; 2024 Summer Kisses 影像工作室 版權所有｜網頁設計 by Gary Chan｜技術支持 by Jinhe Chen</p>
         </div>
@@ -707,13 +913,15 @@
 
     <!-- ===== SCRIPTS ===== -->
     
-    <!-- External Scripts with Async/Defer -->
+    <!-- ===== EXTERNAL SCRIPTS ===== -->
+    <!-- 外部 JavaScript 檔案 - 使用 async/defer 優化載入 -->
     <!-- Bootstrap JavaScript - 提供導航列響應式功能 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <!-- Instagram Embed Script - 用於 Instagram 內容嵌入 -->
     <script async src="//www.instagram.com/embed.js"></script>
     
-    <!-- Local Scripts with Defer - 優化載入順序 -->
+    <!-- ===== LOCAL SCRIPTS ===== -->
+    <!-- 本地 JavaScript 檔案 - 使用 defer 優化載入順序 -->
     <!-- 主要 JavaScript 檔案 - 包含導航選單、滾動效果、互動功能 -->
     <script src="assets/js/hmoe-main.js" defer></script>
     <!-- 滾動效果 JavaScript 檔案 - 專門處理頁首滾動背景色變化 -->
@@ -721,7 +929,8 @@
     <!-- Footer JavaScript 檔案 - 包含頁尾互動功能、動畫效果、無障礙功能 -->
     <script src="assets/js/home-footer.js" defer></script>
     
-    <!-- 效能優化提示 -->
+    <!-- ===== PERFORMANCE OPTIMIZATION ===== -->
+    <!-- 效能優化腳本 - 預載入關鍵資源 -->
     <script>
         // 效能優化：預載入關鍵資源
         if ('connection' in navigator && navigator.connection.effectiveType === '4g') {
@@ -733,7 +942,8 @@
         }
     </script>
     
-    <!-- 影片格動畫和延遲載入腳本 -->
+    <!-- ===== VIDEO GRID ANIMATION ===== -->
+    <!-- 影片格動畫和延遲載入腳本 - 蘋果風格流暢動畫 -->
     <script>
         // 影片格動畫和延遲載入功能 - 蘋果風格流暢動畫
         document.addEventListener('DOMContentLoaded', function() {
@@ -814,7 +1024,7 @@
         }
     </script>
     
-    <!-- Loading Animation Script -->
+    <!-- ===== LOADING ANIMATION ===== -->
     <!-- 載入動畫＆影片播放 JavaScript - 內嵌在 HTML 中，控制載入進度、淡出效果及自動播放功能 -->
     <script>
         // Loading Animation Handler - 優化版本，大幅減少阻塞

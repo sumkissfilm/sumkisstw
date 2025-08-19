@@ -236,7 +236,7 @@ body {
 /* body004 區塊的文字內容樣式調整 */
 .body004 .text-content {
     text-align: center;
-    margin: 1rem auto 1rem auto;
+    margin: 3rem auto 3rem auto;
     position: relative;
     z-index: 1;
     height: auto;
@@ -244,85 +244,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     max-width: 800px;
     width: 100%;
 }
 
-/* 影片網格容器 - 蘋果風格優化 */
-.body004 .image-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    perspective: 1000px;
-}
-
-/* 影片項目樣式 - 蘋果風格優化 */
-.body004 .image-item {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background: transparent;
-    will-change: transform, box-shadow;
-}
-
-.body004 .image-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-
-
-/* 中間影片容器 - 蘋果風格優化 */
-.body004 .middle-images {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    margin: 2rem 0;
-}
-
-/* 半寬影片項目 - 蘋果風格優化 */
-.body004 .image-item.half-width {
-    width: calc(50% - 1rem);
-    position: relative;
-    padding-bottom: 0;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-/* Iframe 樣式 - 蘋果風格優化 */
-.body004 .image-item.half-width iframe {
-    width: 100%;
-    height: 345px;
-    border-radius: 12px;
-    position: relative;
-    border: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* YouTube 嵌入影片樣式 - 蘋果風格優化 */
-.body004 .image-item iframe {
-    width: 100%;
-    height: 660px;
-    border-radius: 12px;
-    position: relative;
-    border: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+/* Video Grid 樣式已移至 HTML 內嵌 CSS */
 
 /* ===== FOOTER SECTION ===== */
 /* 頁尾樣式已移至 css/footer.css 檔案中 */
@@ -344,8 +271,6 @@ body {
         height: 1400px;
     }
     
-
-    
     .text-content .button-group {
         flex-direction: row;
         gap: 1rem;
@@ -362,28 +287,7 @@ body {
         margin-left: 1rem;
     }
     
-
-    
-    .body004 .image-grid {
-        gap: 3rem;
-    }
-    
-    .body004 .image-item.half-width {
-        width: calc(50% - 1rem);
-    }
-    
-    .body004 .image-item.half-width iframe,
-    .body004 .image-item iframe {
-        border-radius: 8px;
-    }
-    
-    .body004 .middle-images {
-        gap: 3rem;
-    }
-    
-
-    
-
+    /* Video Grid 樣式已移至 HTML 內嵌 CSS */
 }
 
 /* 平板版樣式 (≤991px) - 已移至 header-navigation.css */
@@ -437,29 +341,11 @@ body {
         margin-bottom: 0;
     }
 
-    
-    .body004 .image-grid {
-        gap: 0.5rem;
-        padding: 0 1rem;
-    }
-    
-    .body004 .image-item.half-width {
-        width: 100%;
-    }
-    
-    .body004 .image-item.half-width iframe,
-    .body004 .image-item iframe {
-        height: 400px;
-    }
-    
-    .body004 .middle-images {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+    /* Video Grid 樣式已移至 HTML 內嵌 CSS */
     
     /* body004 文字內容手機版優化 */
     .body004 .text-content {
-        margin: 0.5rem auto 0.5rem auto;
+        margin: 1rem auto;
         padding: 0.5rem 0;
         text-align: center;
         display: flex;
@@ -511,29 +397,12 @@ body {
     }
 
     
-    .body004 .image-item iframe {
-        height: 300px;
-    }
-    
-    .body004 .image-item.half-width iframe {
-        height: 180px;
-    }
-
-    /* 手機版影片格動畫優化 */
-    .body004 .image-grid {
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-    
-    .body004 .middle-images {
-        gap: 1.5rem;
-        margin: 1.5rem 0;
-    }
+    /* Video Grid 樣式已移至 HTML 內嵌 CSS */
     
     /* body004 文字內容小手機版優化 */
     .body004 .text-content {
-        margin: 0.3rem auto 0.3rem auto;
-        padding: 0.3rem 0;
+        margin: 0.5rem auto;
+        padding: 0.5rem 0;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -543,13 +412,11 @@ body {
     
     .body004 .text-content p {
         font-size: 13px;
-        margin: 0.3rem 0;
+        margin: 0.5rem 0;
         text-align: center;
     }
     
-    .body004 .image-item.half-width {
-        width: calc(50% - 0.75rem);
-    }
+    /* Video Grid 樣式已移至 HTML 內嵌 CSS */
 }
 
 /* 超小螢幕樣式 (≤400px) */
@@ -576,25 +443,7 @@ body {
         width: 200px;
     }
     
-    .body004 .image-item.half-width iframe,
-    .body004 .image-item iframe {
-        height: 250px;
-    }
-    
-    /* 超小螢幕影片格動畫優化 */
-    .body004 .image-grid {
-        gap: 1rem;
-        padding: 0 0.5rem;
-    }
-    
-    .body004 .middle-images {
-        gap: 1rem;
-        margin: 1rem 0;
-    }
-    
-    .body004 .image-item.half-width {
-        width: calc(50% - 0.5rem);
-    }
+    /* Video Grid 樣式已移至 HTML 內嵌 CSS */
 }
 
 /* ===== LOGO RESPONSIVE ADJUSTMENTS ===== */
@@ -631,6 +480,8 @@ body {
 }
 
 /* 手機版品牌標誌調整 - 已移至 header-navigation.css */
+
+/* Video Grid 樣式已移至 HTML 內嵌 CSS */
 
 
 
