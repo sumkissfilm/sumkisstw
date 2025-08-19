@@ -995,7 +995,12 @@
             // 創建 iframe 元素
             const iframe = document.createElement('iframe');
             iframe.width = '100%';
-            iframe.height = container.classList.contains('half-width') ? '345' : '315';
+            
+            // 16:9 比例的高度設定
+            // 主影片（全寬）：1200px × (9/16) = 675px
+            // 側邊影片（半寬）：(600px - 1rem) × (9/16) ≈ 337.5px
+            iframe.height = container.classList.contains('half-width') ? '338' : '675';
+            
             iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc`;
             iframe.title = videoTitle;
             iframe.frameBorder = '0';
