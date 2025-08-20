@@ -1,33 +1,37 @@
 User-agent: *
 Allow: /
 
-# Allow crawling of main pages
-Allow: /index.html
-Allow: /about.html
-Allow: /faq.html
-Allow: /lovestories.html
-Allow: /price.html
+# 允許所有搜尋引擎爬蟲訪問網站
+# 網站地圖位置
+Sitemap: https://www.sumkiss.tw/sitemap.xml
 
-# Allow crawling of assets
+# 允許訪問所有主要頁面
+Allow: /about
+Allow: /lovestories
+Allow: /price
+Allow: /faq
+
+# 允許訪問資源文件
 Allow: /assets/
 Allow: /images/
 
-# Allow crawling of CSS and JavaScript files
-Allow: /assets/css/
-Allow: /assets/js/
+# 允許訪問 CSS 和 JavaScript 文件
+Allow: /*.css
+Allow: /*.js
 
-# Allow crawling of image files
-Allow: /images/hero/
-Allow: /images/body002/
-Allow: /images/favicon/
-Allow: /images/header/
-Allow: /images/v1/
+# 允許訪問圖片文件
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.mp4
 
-# Disallow crawling of video files (optional - remove if you want videos indexed)
-Disallow: /images/hero/*.mp4
+# 禁止訪問系統文件
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /*.tmp
 
-# Sitemap location
-Sitemap: https://www.sumkiss.tw/sitemap.xml
-
-# Crawl delay (optional - helps prevent overwhelming the server)
+# 爬取延遲（秒）
 Crawl-delay: 1
