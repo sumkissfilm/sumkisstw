@@ -361,10 +361,10 @@
         /* 初始狀態 - 完全隱藏，準備優雅出現 */
         .fade-in-item {
             opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(40px) scale(0.97);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: opacity, transform;
-            filter: blur(2px);
+            filter: blur(1px);
         }
 
         /* 動畫完成狀態 - 優雅地滑入並聚焦 */
@@ -384,12 +384,12 @@
             border-radius: 12px;
             background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .video-placeholder:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
         .video-thumbnail {
@@ -406,14 +406,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
             filter: brightness(0.9);
         }
 
         .video-placeholder:hover .video-thumbnail img {
-            transform: scale(1.08);
-            filter: brightness(1.1);
+            transform: scale(1.05);
+            filter: brightness(1.05);
         }
 
         /* 播放按鈕樣式 - 蘋果風格設計 */
@@ -429,12 +429,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 2;
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0;
-            animation: fadeInPlayButton 0.8s ease-out 0.6s forwards;
+            animation: fadeInPlayButton 0.6s ease-out 0.4s forwards;
         }
 
         @keyframes fadeInPlayButton {
@@ -448,19 +448,19 @@
             color: white;
             font-size: 32px;
             margin-left: 6px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .video-placeholder:hover .play-button {
             background: rgba(247, 188, 81, 0.95);
-            transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 12px 35px rgba(247, 188, 81, 0.4);
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 8px 25px rgba(247, 188, 81, 0.3);
             border-color: rgba(247, 188, 81, 0.3);
         }
 
         .video-placeholder:hover .play-button i {
-            transform: scale(1.15);
+            transform: scale(1.1);
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
         }
 
@@ -468,7 +468,7 @@
         .video-placeholder iframe {
             opacity: 1;
             transform: scale(1);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -514,12 +514,12 @@
             perspective: 1000px;
         }
 
-        .fade-in-item:nth-child(1) { transition-delay: 0.1s; }
-        .fade-in-item:nth-child(2) { transition-delay: 0.2s; }
-        .fade-in-item:nth-child(3) { transition-delay: 0.2s; }
-        .fade-in-item:nth-child(4) { transition-delay: 0.3s; }
-        .fade-in-item:nth-child(5) { transition-delay: 0.3s; }
-        .fade-in-item:nth-child(6) { transition-delay: 0.4s; }
+        .fade-in-item:nth-child(1) { transition-delay: 0.05s; }
+        .fade-in-item:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-item:nth-child(3) { transition-delay: 0.1s; }
+        .fade-in-item:nth-child(4) { transition-delay: 0.15s; }
+        .fade-in-item:nth-child(5) { transition-delay: 0.15s; }
+        .fade-in-item:nth-child(6) { transition-delay: 0.2s; }
 
         /* 滑鼠懸停時的微妙陰影變化 */
         .video-placeholder::before {
@@ -532,7 +532,7 @@
             background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
             border-radius: 12px;
             opacity: 0;
-            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             pointer-events: none;
             z-index: 1;
         }
@@ -1096,17 +1096,17 @@
             iframe.style.height = 'auto';
             iframe.style.minHeight = '200px'; // 手機版最小高度
             
-            // 手機版優化的 YouTube 嵌入參數
+            // 手機版優化的 YouTube 嵌入參數 - 減少載入時間
             const isMobile = window.innerWidth <= 768;
-            const mobileParams = isMobile ? '&playsinline=1&rel=0&modestbranding=1' : '';
-            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0${mobileParams}`;
+            const mobileParams = isMobile ? '&playsinline=1&rel=0&modestbranding=1&enablejsapi=1' : '&enablejsapi=1';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0&rel=0&modestbranding=1${mobileParams}`;
             
             iframe.title = videoTitle;
             iframe.frameBorder = '0';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
             iframe.referrerPolicy = 'strict-origin-when-cross-origin';
             iframe.allowFullscreen = true;
-            iframe.loading = 'lazy';
+            iframe.loading = 'eager'; // 改為立即載入
             
             // 手機版觸控優化
             if (isMobile) {
@@ -1158,12 +1158,12 @@
             // 優化的進度更新，減少阻塞和執行時間
             let progress = 0;
             const animateProgress = () => {
-                progress += 8; // 增加進度增量，減少動畫幀數
+                progress += 12; // 增加進度增量，進一步減少動畫幀數
                 percentage.textContent = Math.min(progress, 100) + '%';
                 
                 if (progress < 100) {
                     // 使用 setTimeout 替代 requestAnimationFrame，減少阻塞
-                    setTimeout(animateProgress, 50);
+                    setTimeout(animateProgress, 30); // 減少間隔時間
                 } else {
                     // 載入完成，立即移除載入狀態
                     loader.classList.add('fade-out');
@@ -1177,7 +1177,7 @@
             };
             
             // 使用 setTimeout 開始動畫，減少阻塞
-            setTimeout(animateProgress, 50);
+            setTimeout(animateProgress, 30); // 減少初始延遲
         });
         
         // 影片播放函數 - 優化版本，確保自動播放可靠
