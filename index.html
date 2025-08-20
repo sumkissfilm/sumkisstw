@@ -51,6 +51,22 @@
     <link rel="preload" href="images/hero/0317_17.webp" as="image" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" href="images/header/summerkiss-logo.png" as="image" fetchpriority="high">
     
+    <!-- ===== YOUTUBE IFRAME PRELOAD ===== -->
+    <!-- YouTube iframe 預載入優化 - 提前準備iframe資源 -->
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
+    
+    <!-- ===== RESOURCE HINTS ===== -->
+    <!-- 資源提示優化 - 提前準備關鍵資源 -->
+    <link rel="prefetch" href="https://www.youtube.com/embed/I_wuDJb7Sj4" as="document">
+    <link rel="prefetch" href="https://www.youtube.com/embed/b8WcgMShfuQ" as="document">
+    <link rel="prefetch" href="https://www.youtube.com/embed/dC6yphLwpsw" as="document">
+    <link rel="prefetch" href="https://www.youtube.com/embed/Yd-l0udh-0M" as="document">
+    <link rel="prefetch" href="https://www.youtube.com/embed/OhZPwT9G6QQ" as="document">
+    <link rel="prefetch" href="https://www.youtube.com/embed/UH9zwGflfBs" as="document">
+    
     <!-- ===== DNS PREFETCH ===== -->
     <!-- DNS 預取 - 加速外部資源載入 -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
@@ -475,12 +491,24 @@
             height: 100%;
             border: none;
             display: block;
+            /* 優化：改善iframe載入性能 */
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
         }
 
         .video-placeholder iframe.loaded {
             opacity: 1;
             transform: scale(1);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 新增：iframe載入優化樣式 */
+        .video-placeholder iframe[loading="eager"] {
+            /* 立即載入的iframe優化 */
+            contain: layout style paint;
+            content-visibility: auto;
         }
         
         /* 手機版 iframe 優化 */
@@ -490,6 +518,11 @@
                 aspect-ratio: 16/9;
                 touch-action: manipulation;
                 -webkit-tap-highlight-color: transparent;
+                /* 手機版額外優化 */
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-perspective: 1000;
+                perspective: 1000;
             }
         }
 
@@ -986,12 +1019,64 @@
             link.href = 'assets/js/home-scroll.js';
             document.head.appendChild(link);
         }
+        
+        // 新增：iframe載入性能監控
+        if ('performance' in window) {
+            // 監控iframe載入性能
+            const observer = new PerformanceObserver((list) => {
+                list.getEntries().forEach((entry) => {
+                    if (entry.name.includes('youtube.com') && entry.entryType === 'navigation') {
+                        console.log(`YouTube iframe載入性能:`, {
+                            name: entry.name,
+                            duration: entry.duration,
+                            transferSize: entry.transferSize,
+                            decodedBodySize: entry.decodedBodySize
+                        });
+                    }
+                });
+            });
+            
+            try {
+                observer.observe({ entryTypes: ['navigation', 'resource'] });
+            } catch (e) {
+                console.log('性能監控不可用:', e);
+            }
+        }
+        
+        // 網路狀況檢測和優化建議
+        function getNetworkOptimization() {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            
+            if (connection) {
+                const effectiveType = connection.effectiveType;
+                const downlink = connection.downlink;
+                const rtt = connection.rtt;
+                
+                console.log('網路狀況:', {
+                    type: effectiveType,
+                    downlink: `${downlink} Mbps`,
+                    rtt: `${rtt} ms`
+                });
+                
+                // 根據網路狀況提供優化建議
+                if (effectiveType === '2g' || effectiveType === 'slow-2g') {
+                    console.log('⚠️ 慢速網路檢測，建議使用低品質影片載入');
+                } else if (effectiveType === '3g') {
+                    console.log('📱 3G網路檢測，建議預載入關鍵影片');
+                } else if (effectiveType === '4g') {
+                    console.log('🚀 4G網路檢測，可以預載入所有影片資源');
+                }
+            }
+        }
+        
+        // 頁面載入完成後檢測網路狀況
+        window.addEventListener('load', getNetworkOptimization);
     </script>
     
     <!-- ===== VIDEO GRID ANIMATION ===== -->
     <!-- 影片格動畫和延遲載入腳本 - 蘋果風格流暢動畫 -->
     <script>
-        // 影片格動畫和延遲載入功能 - 當 body001 滑過頁面底部後觸發 iframe
+        // 影片格動畫和延遲載入功能 - 優化版本，提前觸發iframe載入
         document.addEventListener('DOMContentLoaded', function() {
             // 獲取所有需要動畫的元素
             const fadeItems = document.querySelectorAll('.fade-in-item');
@@ -999,9 +1084,21 @@
             // 獲取 body001 區塊
             const body001 = document.querySelector('.body001');
             
+            // 優化：提前開始預載入iframe資源
+            let preloadStarted = false;
+            
             // 創建一個 Intersection Observer 來監控 body001 的底部
             const body001Observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    // 優化：當 body001 開始進入視窗時就開始預載入
+                    if (entry.isIntersecting && !preloadStarted) {
+                        console.log('body001 進入視窗，開始預載入iframe資源');
+                        preloadStarted = true;
+                        
+                        // 立即開始預載入所有iframe
+                        preloadAllVideos(fadeItems);
+                    }
+                    
                     // 當 body001 的底部離開視窗時觸發 iframe 動畫
                     if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
                         console.log('body001 已滑過頁面底部，開始觸發 iframe 動畫');
@@ -1010,7 +1107,7 @@
                         fadeItems.forEach(item => {
                             if (item.classList.contains('fade-in-item')) {
                                 // 立即載入影片
-                                loadVideo(item);
+                                smartLoadVideo(item);
                                 
                                 // 同時添加動畫類別
                                 requestAnimationFrame(() => {
@@ -1024,8 +1121,8 @@
                     }
                 });
             }, {
-                threshold: 0, // 監控邊界
-                rootMargin: '0px 0px 0px 0px' // 精確監控邊界
+                threshold: 0.1, // 優化：降低觸發閾值，更早開始預載入
+                rootMargin: '50px 0px 0px 0px' // 優化：提前50px開始監控
             });
 
             // 開始觀察 body001
@@ -1045,6 +1142,135 @@
                 }
             });
         });
+        
+        // 新增：預載入所有影片資源函數
+        function preloadAllVideos(containers) {
+            containers.forEach(container => {
+                const videoId = container.dataset.videoId;
+                if (!videoId) return;
+                
+                // 創建隱藏的iframe進行預載入
+                const preloadIframe = document.createElement('iframe');
+                preloadIframe.style.position = 'absolute';
+                preloadIframe.style.left = '-9999px';
+                preloadIframe.style.top = '-9999px';
+                preloadIframe.style.width = '1px';
+                preloadIframe.style.height = '1px';
+                preloadIframe.style.opacity = '0';
+                preloadIframe.style.pointerEvents = 'none';
+                
+                // 使用輕量級參數進行預載入
+                preloadIframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0&rel=0&modestbranding=1&enablejsapi=1&load=1`;
+                preloadIframe.title = 'Preload';
+                preloadIframe.frameBorder = '0';
+                preloadIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                preloadIframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                preloadIframe.loading = 'lazy';
+                
+                // 添加到頁面進行預載入
+                document.body.appendChild(preloadIframe);
+                
+                // 預載入完成後移除
+                preloadIframe.addEventListener('load', () => {
+                    console.log('預載入完成:', videoId);
+                    setTimeout(() => {
+                        if (preloadIframe.parentNode) {
+                            preloadIframe.parentNode.removeChild(preloadIframe);
+                        }
+                    }, 1000);
+                });
+                
+                // 錯誤處理
+                preloadIframe.addEventListener('error', () => {
+                    console.log('預載入失敗:', videoId);
+                    if (preloadIframe.parentNode) {
+                        preloadIframe.parentNode.removeChild(preloadIframe);
+                    }
+                });
+            });
+        }
+        
+        // 新增：智能載入策略函數
+        function smartLoadVideo(container) {
+            const videoId = container.dataset.videoId;
+            const videoTitle = container.dataset.videoTitle;
+            
+            if (!videoId) return;
+            
+            // 檢查網路狀況，決定載入策略
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const isSlowConnection = connection && (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g');
+            
+            // 創建 iframe 元素
+            const iframe = document.createElement('iframe');
+            iframe.width = '100%';
+            
+            // 響應式高度設定
+            iframe.style.aspectRatio = '16/9';
+            iframe.style.height = 'auto';
+            iframe.style.minHeight = '200px';
+            
+            // 根據網路狀況調整載入參數
+            const isMobile = window.innerWidth <= 768;
+            let mobileParams = '&enablejsapi=1&load=1';
+            
+            if (isMobile) {
+                mobileParams += '&playsinline=1&rel=0&modestbranding=1';
+                
+                // 慢速網路優化
+                if (isSlowConnection) {
+                    mobileParams += '&vq=small'; // 低品質優先
+                }
+            }
+            
+            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0&rel=0&modestbranding=1${mobileParams}`;
+            
+            iframe.title = videoTitle;
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.allowFullscreen = true;
+            iframe.loading = 'eager';
+            
+            // 手機版觸控優化
+            if (isMobile) {
+                iframe.style.touchAction = 'manipulation';
+                iframe.style.webkitUserSelect = 'none';
+                iframe.style.userSelect = 'none';
+            }
+            
+            // 直接替換為 YouTube 影片
+            const placeholder = container.querySelector('.video-placeholder');
+            if (placeholder) {
+                placeholder.innerHTML = '';
+                placeholder.appendChild(iframe);
+                
+                // 載入完成處理
+                iframe.addEventListener('load', () => {
+                    iframe.classList.add('loaded');
+                    console.log('YouTube 影片載入完成:', videoTitle);
+                    
+                    // 性能監控
+                    if ('performance' in window) {
+                        const loadTime = performance.now();
+                        console.log(`影片載入耗時: ${loadTime.toFixed(2)}ms`);
+                    }
+                });
+                
+                // 錯誤處理
+                iframe.addEventListener('error', (e) => {
+                    console.error('影片載入失敗:', videoTitle, e);
+                    // 可以添加降級方案
+                });
+                
+                // 手機版點擊事件優化
+                if (isMobile) {
+                    iframe.addEventListener('click', function() {
+                        console.log('手機版影片被點擊:', videoTitle);
+                    });
+                }
+            }
+        }
         
         // 手機版觸控優化函數
         function optimizeMobileTouch() {
@@ -1080,68 +1306,6 @@
             if (iframe) {
                 console.log('手機版影片觸控點擊');
                 // 可以添加額外的觸控反饋
-            }
-        }
-
-        // 蘋果風格的延遲載入影片函數 - 直接顯示 YouTube 影片，跳過載入感覺
-        function loadVideo(container) {
-            const videoId = container.dataset.videoId;
-            const videoTitle = container.dataset.videoTitle;
-            
-            if (!videoId) return;
-            
-            // 創建 iframe 元素
-            const iframe = document.createElement('iframe');
-            iframe.width = '100%';
-            
-            // 響應式高度設定 - 使用 aspect-ratio 確保在不同螢幕下都保持正確比例
-            iframe.style.aspectRatio = '16/9';
-            iframe.style.height = 'auto';
-            iframe.style.minHeight = '200px'; // 手機版最小高度
-            
-            // 手機版優化的 YouTube 嵌入參數 - 減少載入時間
-            const isMobile = window.innerWidth <= 768;
-            const mobileParams = isMobile ? '&playsinline=1&rel=0&modestbranding=1&enablejsapi=1' : '&enablejsapi=1';
-            iframe.src = `https://www.youtube.com/embed/${videoId}?si=Ww1scUvmlfPkyxAc&autoplay=0&rel=0&modestbranding=1${mobileParams}`;
-            
-            iframe.title = videoTitle;
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-            iframe.allowFullscreen = true;
-            iframe.loading = 'eager'; // 改為立即載入
-            
-            // 手機版觸控優化
-            if (isMobile) {
-                iframe.style.touchAction = 'manipulation';
-                iframe.style.webkitUserSelect = 'none';
-                iframe.style.userSelect = 'none';
-            }
-            
-            // 直接替換為 YouTube 影片，完全跳過載入感覺
-            const placeholder = container.querySelector('.video-placeholder');
-            if (placeholder) {
-                // 立即清空內容並添加影片
-                placeholder.innerHTML = '';
-                placeholder.appendChild(iframe);
-                
-                // 影片載入完成後立即顯示，無需額外動畫
-                iframe.addEventListener('load', () => {
-                    iframe.classList.add('loaded');
-                    console.log('YouTube 影片載入完成:', videoTitle);
-                });
-                
-                // 如果影片已經載入完成，直接添加 loaded 類別
-                if (iframe.complete) {
-                    iframe.classList.add('loaded');
-                }
-                
-                // 手機版點擊事件優化
-                if (isMobile) {
-                    iframe.addEventListener('click', function() {
-                        console.log('手機版影片被點擊:', videoTitle);
-                    });
-                }
             }
         }
     </script>
