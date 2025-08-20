@@ -514,12 +514,12 @@
             perspective: 1000px;
         }
 
-        .fade-in-item:nth-child(1) { transition-delay: 0.05s; }
-        .fade-in-item:nth-child(2) { transition-delay: 0.1s; }
-        .fade-in-item:nth-child(3) { transition-delay: 0.1s; }
-        .fade-in-item:nth-child(4) { transition-delay: 0.15s; }
-        .fade-in-item:nth-child(5) { transition-delay: 0.15s; }
-        .fade-in-item:nth-child(6) { transition-delay: 0.2s; }
+        .fade-in-item:nth-child(1) { transition-delay: 0s; }
+        .fade-in-item:nth-child(2) { transition-delay: 0s; }
+        .fade-in-item:nth-child(3) { transition-delay: 0s; }
+        .fade-in-item:nth-child(4) { transition-delay: 0s; }
+        .fade-in-item:nth-child(5) { transition-delay: 0s; }
+        .fade-in-item:nth-child(6) { transition-delay: 0s; }
 
         /* 滑鼠懸停時的微妙陰影變化 */
         .video-placeholder::before {
@@ -991,44 +991,47 @@
     <!-- ===== VIDEO GRID ANIMATION ===== -->
     <!-- 影片格動畫和延遲載入腳本 - 蘋果風格流暢動畫 -->
     <script>
-        // 影片格動畫和延遲載入功能 - 蘋果風格流暢動畫
+        // 影片格動畫和延遲載入功能 - 當 body001 滑過頁面底部後觸發 iframe
         document.addEventListener('DOMContentLoaded', function() {
-            // 蘋果風格的 Intersection Observer 設定 - 提前觸發影片載入
-            const observerOptions = {
-                threshold: [0.05, 0.1, 0.2], // 降低觸發門檻，更早開始載入
-                rootMargin: '0px 0px -200px 0px' // 更提前觸發，讓影片預載入
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+            // 獲取所有需要動畫的元素
+            const fadeItems = document.querySelectorAll('.fade-in-item');
+            
+            // 獲取 body001 區塊
+            const body001 = document.querySelector('.body001');
+            
+            // 創建一個 Intersection Observer 來監控 body001 的底部
+            const body001Observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const item = entry.target;
-                        const intersectionRatio = entry.intersectionRatio;
+                    // 當 body001 的底部離開視窗時觸發 iframe 動畫
+                    if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                        console.log('body001 已滑過頁面底部，開始觸發 iframe 動畫');
                         
-                        // 根據可見程度調整動畫時機
-                        if (intersectionRatio >= 0.05) {
-                            // 如果是影片格，立即載入 YouTube 影片
+                        // 觸發所有 iframe 同時載入和動畫
+                        fadeItems.forEach(item => {
                             if (item.classList.contains('fade-in-item')) {
-                                // 立即載入影片，跳過載入感覺
+                                // 立即載入影片
                                 loadVideo(item);
+                                
+                                // 同時添加動畫類別
+                                requestAnimationFrame(() => {
+                                    item.classList.add('animate');
+                                });
                             }
-                            
-                            // 使用 requestAnimationFrame 確保動畫流暢
-                            requestAnimationFrame(() => {
-                                // 添加動畫類別，觸發優雅的滑入效果
-                                item.classList.add('animate');
-                            });
-                            
-                            // 動畫完成後停止觀察
-                            observer.unobserve(item);
-                        }
+                        });
+                        
+                        // 停止觀察 body001
+                        body001Observer.unobserve(body001);
                     }
                 });
-            }, observerOptions);
+            }, {
+                threshold: 0, // 監控邊界
+                rootMargin: '0px 0px 0px 0px' // 精確監控邊界
+            });
 
-            // 觀察所有需要動畫的元素
-            const fadeItems = document.querySelectorAll('.fade-in-item');
-            fadeItems.forEach(item => observer.observe(item));
+            // 開始觀察 body001
+            if (body001) {
+                body001Observer.observe(body001);
+            }
             
             // 手機版觸控事件優化
             if (window.innerWidth <= 768) {
