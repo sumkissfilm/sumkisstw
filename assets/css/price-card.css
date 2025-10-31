@@ -182,6 +182,25 @@ section.pricing-section {
     background-color: #fff !important;
 }
 
+/* Love Story 專屬：縮小區塊高度並避免垂直滾動 */
+#pricing-love-story {
+    padding: 2.5rem 0 !important; /* 減少上下留白 */
+    overflow-y: hidden !important; /* 避免區塊內出現垂直捲軸 */
+}
+
+#pricing-love-story .row.g-4 {
+    --bs-gutter-y: 1rem; /* 縱向間距縮小 */
+}
+
+#pricing-love-story .pricing-card {
+    margin-bottom: 1rem !important; /* 卡片下方間距縮小 */
+}
+
+#pricing-love-story .text-center.mt-3,
+#pricing-love-story .text-center.mt-4 {
+    margin-top: 0.75rem !important; /* 提示與按鈕的上方間距縮小 */
+}
+
 /* 價格卡片樣式 */
 section.pricing-section .pricing-card {
     margin-bottom: 2rem !important;
@@ -1069,6 +1088,286 @@ section.about-story .card p {
         font-size: 0.75rem;
     }
 } 
+
+/* ===== MV 價格區塊居中對齊 ===== */
+/* 確保 MV 價格區塊的兩個卡片在桌面版居中對齊 */
+
+/* 桌面版 (≥992px) - 兩個卡片居中對齊 */
+@media (min-width: 992px) {
+    .pricing-section .row.justify-content-center {
+        justify-content: center !important;
+    }
+    
+    .pricing-section .col-lg-5 {
+        max-width: 45% !important;
+        flex: 0 0 45% !important;
+    }
+}
+
+/* 大螢幕 (≥1200px) - 優化間距 */
+@media (min-width: 1200px) {
+    .pricing-section .col-lg-5 {
+        max-width: 42% !important;
+        flex: 0 0 42% !important;
+    }
+}
+
+/* 平板版 (768px-991px) - 保持原有響應式設計 */
+@media (min-width: 768px) and (max-width: 991px) {
+    .pricing-section .col-lg-5 {
+        max-width: 50% !important;
+        flex: 0 0 50% !important;
+    }
+}
+
+/* 手機版 (≤767px) - 確保單列顯示，避免滾動條 */
+@media (max-width: 767px) {
+    .pricing-section .col-lg-5 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .pricing-section .row.justify-content-center {
+        justify-content: center !important;
+    }
+    
+    /* 優化手機版卡片高度，避免滾動條 */
+    section.pricing-section .pricing-card .card-title {
+        min-height: 60px !important; /* 減少標題最小高度 */
+        margin-bottom: 0.2rem !important; /* 減少間距 */
+    }
+    
+    section.pricing-section .pricing-card .card-body {
+        padding: 0.8rem !important; /* 減少內邊距 */
+    }
+    
+    section.pricing-section .pricing-card ul li {
+        margin-bottom: 0.3rem !important; /* 減少列表項間距 */
+        font-size: 0.75rem !important; /* 稍微減小字體 */
+    }
+    
+    section.pricing-section .price {
+        margin: 1rem 0 !important; /* 減少價格區域間距 */
+    }
+}
+
+/* 小手機版 (≤575px) - 進一步優化間距 */
+@media (max-width: 575px) {
+    .pricing-section .col-lg-5 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    /* 進一步優化小手機版卡片高度 */
+    section.pricing-section .pricing-card .card-title {
+        min-height: 50px !important; /* 進一步減少標題高度 */
+        margin-bottom: 0.1rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-body {
+        padding: 0.6rem !important; /* 進一步減少內邊距 */
+    }
+    
+    section.pricing-section .pricing-card ul li {
+        margin-bottom: 0.25rem !important;
+        font-size: 0.7rem !important; /* 進一步減小字體 */
+    }
+    
+    section.pricing-section .price {
+        margin: 0.8rem 0 !important;
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 1.3rem !important; /* 稍微減小價格字體 */
+    }
+}
+
+/* 極小螢幕 (≤400px) - 進一步優化，確保不會產生滾動條 */
+@media (max-width: 400px) {
+    .pricing-section .col-lg-5 {
+        margin-bottom: 0.6rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-title {
+        min-height: 45px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    section.pricing-section .pricing-card .card-body {
+        padding: 0.5rem !important;
+    }
+    
+    section.pricing-section .pricing-card ul li {
+        font-size: 0.65rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    
+    section.pricing-section .price {
+        margin: 0.6rem 0 !important;
+    }
+    
+    section.pricing-section .discounted-price .h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    section.pricing-section .original-price .h5 {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* ===== 愛情故事價格區塊手機版優化 ===== */
+/* 確保愛情故事區塊的3個卡片在手機版不會產生滾動條 */
+
+/* 手機版 (≤767px) - 愛情故事區塊優化 */
+@media (max-width: 767px) {
+    .pricing-section .col-lg-4 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* 愛情故事區塊特定優化 */
+    .pricing-section .row.g-4 {
+        margin: 0 !important;
+    }
+    
+    .pricing-section .row.g-4 > * {
+        padding: 0 !important;
+    }
+}
+
+/* 小手機版 (≤575px) - 愛情故事區塊進一步優化 */
+@media (max-width: 575px) {
+    .pricing-section .col-lg-4 {
+        margin-bottom: 0.8rem !important;
+    }
+}
+
+/* 極小螢幕 (≤400px) - 愛情故事區塊極小螢幕優化 */
+@media (max-width: 400px) {
+    .pricing-section .col-lg-4 {
+        margin-bottom: 0.6rem !important;
+    }
+}
+
+/* ===== 回憶系列價格卡片手機版優化 ===== */
+/* 確保回憶系列區塊的價格卡片在手機版不會產生滾動條 */
+
+/* 手機版 (≤767px) - 回憶系列區塊優化 */
+@media (max-width: 767px) {
+    .memories-section .col-12 {
+        padding: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .memories-section .pricing-card {
+        margin-bottom: 0 !important;
+    }
+    
+    /* 回憶系列特定樣式優化 */
+    .memories-section .memories-series-list li {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.3rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .memories-section .memories-series-list li i {
+        margin-right: 0.4rem !important;
+    }
+}
+
+/* 小手機版 (≤575px) - 回憶系列區塊進一步優化 */
+@media (max-width: 575px) {
+    .memories-section .col-12 {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .memories-section .memories-series-list li {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+}
+
+/* 極小螢幕 (≤400px) - 回憶系列區塊極小螢幕優化 */
+@media (max-width: 400px) {
+    .memories-section .col-12 {
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .memories-section .memories-series-list li {
+        font-size: 0.65rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+}
+
+/* ===== 全局價格區塊手機版優化 ===== */
+/* 確保所有價格區塊在手機版都不會產生滾動條 */
+
+/* 手機版 (≤767px) - 全局優化 */
+@media (max-width: 767px) {
+    /* 確保所有價格區塊的容器不會溢出 */
+    .pricing-section .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    /* 優化所有價格卡片的間距 */
+    .pricing-section .pricing-card {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* 確保按鈕區域不會造成溢出 */
+    .pricing-section .text-center {
+        margin-top: 1rem !important;
+    }
+    
+    /* 優化車馬費資訊提示 */
+    .pricing-section .text-center.mt-3 {
+        margin-top: 0.8rem !important;
+    }
+}
+
+/* 小手機版 (≤575px) - 全局進一步優化 */
+@media (max-width: 575px) {
+    .pricing-section .container {
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+    
+    .pricing-section .pricing-card {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .pricing-section .text-center {
+        margin-top: 0.8rem !important;
+    }
+    
+    .pricing-section .text-center.mt-3 {
+        margin-top: 0.6rem !important;
+    }
+}
+
+/* 極小螢幕 (≤400px) - 全局極小螢幕優化 */
+@media (max-width: 400px) {
+    .pricing-section .container {
+        padding-left: 0.15rem !important;
+        padding-right: 0.15rem !important;
+    }
+    
+    .pricing-section .pricing-card {
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .pricing-section .text-center {
+        margin-top: 0.6rem !important;
+    }
+    
+    .pricing-section .text-center.mt-3 {
+        margin-top: 0.5rem !important;
+    }
+}
 
 /* ===== 統一文字區塊字體大小 ===== */
 /* 簡化響應式字體大小控制，避免重複設定 */

@@ -691,6 +691,16 @@ body {
         height: 35px;
         font-size: 1rem;
     }
+    
+    /* 手機版故事文字區塊置中 */
+    .story-text {
+        text-align: center;
+    }
+    
+    .story-text ul {
+        display: inline-block;
+        text-align: left;
+    }
 }
 
 /* ===== CONTAINER RESPONSIVE ADJUSTMENTS ===== */
