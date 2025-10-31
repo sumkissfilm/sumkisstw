@@ -10,6 +10,9 @@
     --white: #ffffff;
     --shadow-light: rgba(0, 0, 0, 0.1);
     --shadow-medium: rgba(0, 0, 0, 0.15);
+    /* Price card sizing */
+    --price-card-max-width: 420px;
+    --price-card-mobile-gutter: 12px;
 }
 
 /* ===== 統一文字區塊字體大小設定 ===== */
@@ -218,6 +221,9 @@ section.pricing-section .pricing-card .card {
     background: var(--white) !important;
     box-shadow: 0 5px 15px var(--shadow-light) !important;
     transition: all 0.3s ease !important;
+    max-width: var(--price-card-max-width) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* 特色卡片樣式 - 品牌色外框 */
@@ -1415,3 +1421,16 @@ section.about-story .card p {
         font-size: 0.85rem;
     }
 } 
+
+/* ===== Mobile gutters for price cards (≤767px) ===== */
+@media (max-width: 767px) {
+    .pricing-section .row.g-4 > *,
+    .pricing-section .row > [class*="col-"] {
+        padding-left: var(--price-card-mobile-gutter) !important;
+        padding-right: var(--price-card-mobile-gutter) !important;
+    }
+    .pricing-section .pricing-card {
+        margin-left: var(--price-card-mobile-gutter) !important;
+        margin-right: var(--price-card-mobile-gutter) !important;
+    }
+}
