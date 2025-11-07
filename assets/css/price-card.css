@@ -52,36 +52,21 @@
     }
 }
 
-/* Mobile Large (576px-767px) */
-@media (min-width: 576px) and (max-width: 767px) {
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
     .about-story .story-text p,
     .pricing-section .story-text p,
     .memories-section .story-text p,
     section.about-story .story-text p,
-    section.pricing-section .story-text p {
-        font-size: 1rem !important; /* 約 14.4px */
-    }
-}
-
-/* Mobile Small (≤575px) */
-@media (max-width: 575px) {
-    .about-story .story-text p,
-    .pricing-section .story-text p,
-    .memories-section .story-text p,
-    section.about-story .story-text p,
-    section.pricing-section .story-text p {
-        font-size: 0.7rem !important; /* 約 11.2px */
-    }
-}
-
-/* Extra Small Mobile (≤399px) */
-@media (max-width: 399px) {
-    .about-story .story-text p,
-    .pricing-section .story-text p,
-    .memories-section .story-text p,
-    section.about-story .story-text p,
-    section.pricing-section .story-text p {
-        font-size: 1rem !important; /* 約 13.6px */
+    section.pricing-section .story-text p,
+    .about-story .story-text li,
+    .pricing-section .story-text li,
+    .memories-section .story-text li,
+    section.about-story .story-text li,
+    section.pricing-section .story-text li,
+    .story-text p,
+    .story-text li {
+        font-size: 0.8rem !important; /* 約 12.8px */
     }
 }
 
@@ -111,21 +96,21 @@
 /* Mobile Large (576px-767px) */
 @media (min-width: 576px) and (max-width: 767px) {
     .about-story .story-text p {
-        font-size: 0.9rem !important; /* 約 14.4px */
+        font-size: 0.8rem !important; /* 約 12.8px */
     }
 }
 
 /* Mobile Small (≤575px) */
 @media (max-width: 575px) {
     .about-story .story-text p {
-        font-size: 0.7rem !important; /* 約 11.2px */
+        font-size: 0.8rem !important; /* 約 12.8px */
     }
 }
 
 /* Extra Small Mobile (≤399px) */
 @media (max-width: 399px) {
     .about-story .story-text p {
-        font-size: 0.7rem !important; /* 約 11.2px */
+        font-size: 0.8rem !important; /* 約 12.8px */
     }
 }
 
@@ -1178,7 +1163,7 @@ section.about-story .card p {
     
     section.pricing-section .pricing-card ul li {
         margin-bottom: 0.25rem !important;
-        font-size: 0.7rem !important; /* 進一步減小字體 */
+        font-size: 0.8rem !important; /* 進一步減小字體 */
     }
     
     section.pricing-section .price {
@@ -1206,7 +1191,7 @@ section.about-story .card p {
     }
     
     section.pricing-section .pricing-card ul li {
-        font-size: 0.65rem !important;
+        font-size: 0.8rem !important;
         margin-bottom: 0.2rem !important;
     }
     
@@ -1407,7 +1392,7 @@ section.about-story .card p {
     section.about-story .story-text p,
     section.pricing-section .story-text p,
     .story-text p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -1418,7 +1403,7 @@ section.about-story .card p {
     section.about-story .story-text p,
     section.pricing-section .story-text p,
     .story-text p {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 } 
 
