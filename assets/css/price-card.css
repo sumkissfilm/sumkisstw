@@ -70,7 +70,7 @@
     .memories-section .story-text p,
     section.about-story .story-text p,
     section.pricing-section .story-text p {
-        font-size: 1rem !important; /* 約 13.6px */
+        font-size: 0.7rem !important; /* 約 11.2px */
     }
 }
 
@@ -118,14 +118,14 @@
 /* Mobile Small (≤575px) */
 @media (max-width: 575px) {
     .about-story .story-text p {
-        font-size: 0.85rem !important; /* 約 13.6px */
+        font-size: 0.7rem !important; /* 約 11.2px */
     }
 }
 
 /* Extra Small Mobile (≤399px) */
 @media (max-width: 399px) {
     .about-story .story-text p {
-        font-size: 0.85rem !important; /* 約 13.6px */
+        font-size: 0.7rem !important; /* 約 11.2px */
     }
 }
 
@@ -1418,7 +1418,7 @@ section.about-story .card p {
     section.about-story .story-text p,
     section.pricing-section .story-text p,
     .story-text p {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 } 
 
