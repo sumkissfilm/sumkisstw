@@ -242,7 +242,7 @@ body {
     line-height: 1;
 }
 
-/* 回憶系列文字區塊樣式 - 與愛情故事區塊保持一致 */
+/* 回憶系列文字區塊樣式 - 與愛情訪談區塊保持一致 */
 .memories-section .story-text {
     text-align: left;
     opacity: 1;
@@ -307,7 +307,7 @@ body {
     color: #e5a93c;
 }
 
-/* Memories Section Responsive - 與愛情故事區塊保持一致 */
+/* Memories Section Responsive - 與愛情訪談區塊保持一致 */
 @media (max-width: 991px) {
     .memories-section .section-title {
         font-size: 1.8rem;

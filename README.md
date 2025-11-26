@@ -4,7 +4,7 @@
 
 ## 📖 專案介紹
 
-Summer Kisses 是一間專注於製作愛情故事的影像工作室，致力於捕捉最真實、最動人的情感瞬間。這個官方網站展示了我們的作品集、服務內容，並提供客戶預約諮詢的管道。
+Summer Kisses 是一間專注於製作愛情訪談的影像工作室，致力於捕捉最真實、最動人的情感瞬間。這個官方網站展示了我們的作品集、服務內容，並提供客戶預約諮詢的管道。
 
 **🌐 官方網站：** [www.sumkiss.tw](https://www.sumkiss.tw)
 
@@ -70,8 +70,8 @@ sumkisstw/
 │   │   ├── home-footer.css             # 頁尾樣式
 │   │   ├── about-style.css             # 關於我們頁面樣式
 │   │   ├── about.css                   # 關於我們詳細樣式
-│   │   ├── lovestories-style.css       # 愛情故事頁面樣式
-│   │   ├── lovestories.css             # 愛情故事詳細樣式
+│   │   ├── lovestories-style.css       # 愛情訪談頁面樣式
+│   │   ├── lovestories.css             # 愛情訪談詳細樣式
 │   │   ├── price-style.css             # 價格方案頁面樣式
 │   │   ├── price.css                   # 價格方案詳細樣式
 │   │   ├── price-card.css              # 價格卡片樣式
@@ -84,7 +84,7 @@ sumkisstw/
 │   │   ├── home-footer.js              # 首頁頁尾功能
 │   │   ├── about-main.js               # 關於我們主要功能
 │   │   ├── about-scroll.js             # 關於我們滾動效果
-│   │   ├── ls-scroll.js               # 愛情故事滾動效果
+│   │   ├── ls-scroll.js               # 愛情訪談滾動效果
 │   │   ├── price-main.js               # 價格方案主要功能
 │   │   ├── price-carousel.js           # 價格輪播功能
 │   │   ├── price-script.js             # 價格方案腳本
@@ -102,7 +102,7 @@ sumkisstw/
 │   └── v1/                             # 版本1圖片
 ├── index.html                          # 首頁
 ├── about.html                          # 關於我們頁面
-├── lovestories.html                    # 愛情故事頁面
+├── lovestories.html                    # 愛情訪談頁面
 ├── price.html                          # 價格方案頁面
 ├── faq.html                           # FAQ頁面
 └── README.md                           # 專案說明文件
@@ -226,7 +226,7 @@ sumkisstw/
 ### v2.1.0 (2025-10-31)
 - 🎉 初始版本發布
 - ✨ 響應式設計實作
-- ✨ 多頁面架構 (首頁、關於我們、愛情故事、價格方案、FAQ)
+- ✨ 多頁面架構 (首頁、關於我們、愛情訪談、價格方案、FAQ)
 - ✨ 作品展示功能
 - ✨ 社群媒體整合
 - ✨ 載入動畫效果

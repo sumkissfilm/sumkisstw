@@ -1,4 +1,4 @@
-/* ===== 簡化版愛情故事價格區塊CSS ===== */
+/* ===== 簡化版愛情訪談價格區塊CSS ===== */
 
 /* 主題色彩 */
 :root {
@@ -16,7 +16,7 @@
 }
 
 /* ===== 統一文字區塊字體大小設定 ===== */
-/* 確保愛情故事、回憶系列、商業合作三個區塊的字體大小完全一致 */
+/* 確保愛情訪談、回憶系列、商業合作三個區塊的字體大小完全一致 */
 /* 使用最高優先級確保覆蓋所有其他設定 */
 
 /* Large Desktop (≥1200px) */
@@ -1208,10 +1208,10 @@ section.about-story .card p {
     }
 }
 
-/* ===== 愛情故事價格區塊手機版優化 ===== */
-/* 確保愛情故事區塊的3個卡片在手機版不會產生滾動條 */
+/* ===== 愛情訪談價格區塊手機版優化 ===== */
+/* 確保愛情訪談區塊的3個卡片在手機版不會產生滾動條 */
 
-/* 手機版 (≤767px) - 愛情故事區塊優化 */
+/* 手機版 (≤767px) - 愛情訪談區塊優化 */
 @media (max-width: 767px) {
     .pricing-section .col-lg-4 {
         max-width: 100% !important;
@@ -1219,7 +1219,7 @@ section.about-story .card p {
         margin-bottom: 1rem !important;
     }
     
-    /* 愛情故事區塊特定優化 */
+    /* 愛情訪談區塊特定優化 */
     .pricing-section .row.g-4 {
         margin: 0 !important;
     }
@@ -1229,14 +1229,14 @@ section.about-story .card p {
     }
 }
 
-/* 小手機版 (≤575px) - 愛情故事區塊進一步優化 */
+/* 小手機版 (≤575px) - 愛情訪談區塊進一步優化 */
 @media (max-width: 575px) {
     .pricing-section .col-lg-4 {
         margin-bottom: 0.8rem !important;
     }
 }
 
-/* 極小螢幕 (≤400px) - 愛情故事區塊極小螢幕優化 */
+/* 極小螢幕 (≤400px) - 愛情訪談區塊極小螢幕優化 */
 @media (max-width: 400px) {
     .pricing-section .col-lg-4 {
         margin-bottom: 0.6rem !important;
