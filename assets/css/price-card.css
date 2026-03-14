@@ -193,6 +193,7 @@ section.pricing-section {
 section.pricing-section .pricing-card {
     margin-bottom: 2rem !important;
     transition: transform 0.3s ease !important;
+    height: 100% !important; /* 讓每張價格卡片等高 */
 }
 
 section.pricing-section .pricing-card:hover {
@@ -209,6 +210,9 @@ section.pricing-section .pricing-card .card {
     max-width: var(--price-card-max-width) !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    height: 100% !important; /* 讓卡片本身撐滿容器高度 */
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 /* 特色卡片樣式 - 品牌色外框 */
